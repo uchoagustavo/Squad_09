@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banese Card Login</title>
+    <link rel="stylesheet" href="/csss/login.css">
+    <link rel="shortcut icon" href="static/img/Dashboard/logo1.jpeg" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="login-form">
+                <img src="static/img/baneseCard.png" alt="Banese Card Logo" class="logo">
+                <h2>Gestor</h2>
+                <form id="loginForm">
+                    <label for="id-gestor">ID do Gestor</label>
+                    <input type="text" id="id-gestor" name="id-gestor" required>
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required>
+                    <button type="submit" class="sign-in-btn">Login</button>
+                </form>
+                <div id="message" style="color: red;"></div>
+            </div>
+            <div class="admin-box">
+                <h2 id="bem-vindo">Bem-vindo, Gestor!</h2>
+                <p id="pronto">Pronto para fazer acontecer?</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const users = {
+            'usuario1': 'senha1',
+            'usuario2': 'senha2'
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            const username = document.getElementById('id-gestor').value;
+            const password = document.getElementById('senha').value;
+
+            if (users[username] && users[username] === password) {
+                // Redirecionar para a nova página
+                window.location.href = '/htmls/dashboard.html'; // Caminho correto para a página desejada
+            } else {
+                document.getElementById('message').textContent = 'Credenciais inválidas. Tente novamente.';
+            }
+        });
+    </script>
+</body>
+</html>

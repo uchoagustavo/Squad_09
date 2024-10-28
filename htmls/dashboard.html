@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0">
+    <title>Banese Card Dashboard</title>
+    <link rel="shortcut icon" href="static/img/Dashboard/logo1.jpeg" type="image/x-icon">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 50%, #00b766 50%), 
+                        url('/imgs/dashboard/'); /* Gradiente + Imagem de Fundo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .settings-btn img {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .section {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #005E52;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .grid-item {
+            background-color: #005E52;
+            color: #F8F6F0;
+            width: 100%;
+            height: 220px;
+            border-radius: 15px 0px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .grid-item p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .clik-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 182px;
+            height: 182px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .clik-item:hover {
+            transform: rotate(5deg);
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            bottom: 0;
+            width: 97.9%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        footer a {
+            color: #005E52;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1000px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section h2 {
+            color: #fff;
+            text-align: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: #bfb9ac; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 40px; border-radius: 10px 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <img src="/imgs/dashboard/baneseCard.png" alt="Banese Card Logo" style="height: 50px;">
+            <div style="display: flex; align-items: center;">
+                <img src="/imgs/dashboard/logousuario.png" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+                <span class="greeting">Olá Gestor!</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Seção de Campanhas em Andamento -->
+        <div class="section">
+            <h2>Gestão Campanhas</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <form>
+                        <div onclick="window.location.href='/htmls/criar_campanha.html'" class="clik-item">
+                            <img src="/imgs/dashboard/plus.png" alt="Criar nova campanha">
+                            <p>Criar nova campanha</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="grid-item">
+                    <form>
+                        <div onclick="window.location.href='/htmls/campanhas.html'" class="clik-item">
+                            <img src="/imgs/dashboard/icon_lista.png" alt="Visualizar campanhas">
+                            <p>Campanhas</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Relatórios Recentes -->
+        <div class="section">
+            <h2>Relatórios e Integrações</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <img src="/imgs/dashboard/icon_grafico.png" alt="Ver relatórios">
+                    <p>Ver relatórios</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/imgs/dashboard/icon_cadeado.png" alt="Gerenciar Integrações">
+                    <p>Gerenciar Integrações</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Banese Card. Todos os direitos reservados. | <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a> | <a href="#">Equipe</a></p>
+    </footer>
+
+</body>
+</html>

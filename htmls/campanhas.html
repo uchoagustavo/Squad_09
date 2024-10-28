@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Campanhas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="static/img/Dashboard/logo1.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Arquivo CSS externo -->
+    <style>
+        /* Estilos unificados e organizados */
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url('static/img/background.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f8f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container1 {
+            flex: 1; /* Isso faz com que o contêiner principal ocupe o espaço restante disponível */
+            background-color: #f0f4f8;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 400px;
+            margin: 50px auto;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1; /* Isso garante que cada tela de conteúdo ocupe o espaço restante */
+        }
+
+        .container1:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .container1 img, .container img {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .container1 h1, .container h1 {
+            font-size: 32px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .container1 h1 span, .container h1 span {
+            display: block;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .container1 h1::after, .container h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #00ff00;
+            margin: 10px auto;
+        }
+
+        .button, .button1 {
+            background-color: #004d40;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover, .button1:hover {
+            background-color: #014b46;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .campaigns, .finished-campaigns, .edit-campaign {
+            display: none;
+        }
+
+        .campaigns.active, .finished-campaigns.active, .edit-campaign.active {
+            display: block;
+        }
+
+        .campaign-item {
+            background-color: #e0f7fa;
+            color: #004d40;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .campaign-item h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .campaign-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .edit-form {
+            text-align: left;
+        }
+
+        .edit-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 16px;
+        }
+
+        .edit-form input, .edit-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .back-button {
+            background-color: #1ab569;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #159e56;
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            margin-top: 0; /* Remova qualquer margem superior */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        footer a {
+            color: #005E52;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container1 {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color: #bfb9ac; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 40px; border-radius: 10px 10px;"> <!-- Cabeçalho da página -->
+        <div onclick="window.location.href='/'" style="display: flex; justify-content: center; align-items: center;"> <!-- Contêiner do cabeçalho -->
+            <img src="static/img/baneseCard.png" alt="Banese Card Logo" style="height: 80px;"> <!-- Logo do Banese Card -->
+        </div>
+        <div onclick="window.location.href='/'" style="display: flex; justify-content: space-around; align-items: center;">
+            <button class="back-button" onclick="window.location.href='/'">← Voltar</button>
+        </div>
+    </header>
+    <div class="container1" id="main-screen">
+        <h1>Banese Card<br /><span> Campanhas</span></h1>
+        <button class="button1" onclick="showCampaigns()" aria-label="Campanhas ativas">
+            Campanhas ativas
+            <p>Veja as campanhas ativas, selecione e as edite</p>
+        </button>
+        <button class="button1" onclick="showFinishedCampaigns()" aria-label="Campanhas finalizadas">
+            Campanhas finalizadas
+            <p>Veja as campanhas finalizadas, selecione e as edite</p>
+        </button>
+    </div>
+
+    <div class="content campaigns" id="campaigns-screen">
+        <h1>Campanhas Ativas</h1>
+        <div class="campaign-item" onclick="editCampaign('Cashback Supermercado XYZ', 'Receba 10% de cashback em todas as compras no Supermercado XYZ.')">
+            <h2>Cashback Supermercado XYZ</h2>
+            <p>Receba 10% de cashback em todas as compras no Supermercado XYZ.</p>
+        </div>
+        <div class="campaign-item" onclick="editCampaign('Desconto Farmácia ABC', 'Desconto de 15% em medicamentos na Farmácia ABC.')">
+            <h2>Desconto Farmácia ABC</h2>
+            <p>Desconto de 15% em medicamentos na Farmácia ABC.</p>
+        </div>
+    </div>
+
+    <div class="content finished-campaigns" id="finished-campaigns-screen">
+        <h1>Campanhas Finalizadas</h1>
+        <div class="campaign-item">
+            <h2>Cashback Loja de Roupas ABC</h2>
+            <p>Receba 5% de cashback em todas as compras na Loja de Roupas ABC.</p>
+        </div>
+        <div class="campaign-item">
+            <h2>Desconto Livraria XYZ</h2>
+            <p>Desconto de 20% em livros na Livraria XYZ.</p>
+        </div>
+        <!-- Outras campanhas finalizadas... -->
+        <button class="button" onclick="goBack()">Voltar</button>
+    </div>
+
+    <div class="content edit-campaign" id="edit-campaign-screen">
+        <h1>Editar Campanha</h1>
+        <form class="edit-form" onsubmit="saveCampaign(event)">
+            <label for="campaign-title">Título da Campanha</label>
+            <input type="text" id="campaign-title" name="campaign-title" required maxlength="50">
+            <label for="campaign-description">Descrição da Campanha</label>
+            <textarea id="campaign-description" name="campaign-description" rows="4" required maxlength="200"></textarea>
+            <button class="button" type="submit">Continuar</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleView(screenToShow) {
+            const screens = ['main-screen', 'campaigns-screen', 'finished-campaigns-screen', 'edit-campaign-screen'];
+            screens.forEach(screen => {
+                document.getElementById(screen).style.display = screen === screenToShow ? 'block' : 'none';
+            });
+        }
+
+        function showCampaigns() { toggleView('campaigns-screen'); }
+        function showFinishedCampaigns() { toggleView('finished-campaigns-screen'); }
+        function goBack() { toggleView('main-screen'); }
+
+        function editCampaign(title, description) {
+            toggleView('edit-campaign-screen');
+            document.getElementById('campaign-title').value = title;
+            document.getElementById('campaign-description').value = description;
+        }
+
+        function saveCampaign(event) {
+            event.preventDefault();
+            const title = document.getElementById('campaign-title').value;
+            const description = document.getElementById('campaign-description').value;
+            const campaignItems = document.querySelectorAll('.campaign-item');
+            campaignItems.forEach(item => {
+                if (item.querySelector('h2').innerText === title) {
+                    item.querySelector('p').innerText = description;
+                }
+            });
+            toggleView('campaigns-screen');
+        }
+    </script>
+
+<footer>
+    <p>&copy; 2024 Banese Card. Todos os direitos reservados. | <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
+</footer>
+
+</body>
+</html>
