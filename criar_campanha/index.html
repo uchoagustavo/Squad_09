@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <form class="form-container">
+          <h1>Vamos começar um novo projeto!</h1>
+          <hr>
+          <div class="first-row">
+            <div class="input-mans">
+              <div class="input-group-nome-desc">
+                <input
+                  type="text"
+                  id="nome-campanha"
+                  placeholder="Digite o nome da campanha"
+                  class="input"
+                  required
+                />
+                <label for="nome-campanha">Nome da campanha</label>
+              </div>
+              <div class="input-group-nome-desc">
+                <input
+                  type="text"
+                  id="desc-campanha"
+                  placeholder="Digite a descrição da campanha"
+                  class="input"
+                  required
+                />
+                <label for="desc-campanha">Descrição da campanha</label>
+              </div>
+            </div>
+            <div class="upload-imagem">
+              <div class="texto-imagem">
+                <p>Arraste sua imagem aqui <br />ou</p>
+                <p class="upload-btn">Upload</p>
+              </div>
+            </div>
+          </div>
+          <div class="second-row">
+            <div class="modelo-cartao">
+              <div class="opcoes_cartao">
+                <h2>Escolha o modelo de cartão!</h2>
+                <div class="opcao">
+                  <div>
+                    <p id="1">Banese Card</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle1" onchange="toggleCartao('1', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="2">Banese Benefícios</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle2" onchange="toggleCartao('2', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="3">Banese Alimentação</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle3" onchange="toggleCartao('3', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="4">BC Elo Nanquim</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle4" onchange="toggleCartao('4', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mecanicas">
+              <div class="opcoes-mecanicas">
+                <h2>Quais serão as mecânicas?</h2>
+                <div class="opcao">
+                  <div>
+                    <p id="5">Mecânica de Frequência</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle5" onchange="toggleCartao('5', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="6">Mecânica Transacional</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle6" onchange="toggleCartao('6', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="7">Mecânica de Acúmulo</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle7" onchange="toggleCartao('7', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="third-row">
+            <div class="fator_categ">
+              <div class="opcoes-categ">
+                <h2>Fator de Categorização</h2>
+                <div class="opcao">
+                  <div>
+                    <p id="8">Transações Categorizadas</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle8" onchange="toggleCartao('8', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="9">Portadores Cadastrados + TC</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle9" onchange="toggleCartao('9', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="premios">
+              <div class="opcoes-premios">
+                <h2>Quais serão os prêmios?</h2>
+                <div class="opcao">
+                  <div>
+                    <p id="10">Desconto em fatura</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle10" onchange="toggleCartao('10', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="opcao">
+                  <div>
+                    <p id="11">Pontos Livelo</p>
+                  </div>
+                  <div class="div-switch-grande">
+                    <label class="switch-grande">
+                      <input type="checkbox" id="toggle11" onchange="toggleCartao('11', this)" />
+                      <span class="slider-grande"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fourth-row">
+            <div class="input-mans">
+              <div class="input-cashback-limit">
+                <input
+                  type="text"
+                  id="cashback-limit"
+                  placeholder="Ex: R$250,00 total, 15% ou 10 transações"
+                  class="input"
+                  required
+                />
+                <label for="cashback-limit">Limite de cashbacks</label>
+              </div>
+              <div class="input-cashback-limit">
+                <input type="text" id="estab-come" placeholder="Ex: 56789 = 'Gbarbosa'" class="input" required />
+                <label for="estab-come">Estabelecimento Comercial</label>
+              </div>
+            </div>
+            <div class="periodo">
+              <h2>Informe o Périodo</h2>
+              <div class="div-data">
+                <div class="input-group-data">
+                  <div class="input-item">
+                    <input
+                      type="text"
+                      id="day"
+                      placeholder="DD"
+                      maxlength="2"
+                      class="input-data"
+                      pattern="\d*"
+                      required
+                    />
+                    <label for="day">DIA</label>
+                  </div>
+                  <div class="input-item">
+                    <input
+                      type="text"
+                      id="month"
+                      placeholder="MM"
+                      maxlength="2"
+                      class="input-data"
+                      pattern="\d*"
+                      required
+                    />
+                    <label for="month">MÊS</label>
+                  </div>
+                  <div class="input-item">
+                    <input
+                      type="text"
+                      id="year"
+                      placeholder="AAAA"
+                      maxlength="4"
+                      class="input-data"
+                      pattern="\d*"
+                      required
+                    />
+                    <label for="year">ANO</label>
+                  </div>
+                </div>
+                <div id="day-error" class="error"></div>
+                <div id="month-error" class="error"></div>
+                <div id="year-error" class="error"></div>
+              </div>
+              <div class="input-group-data">
+                <div class="input-item">
+                  <input
+                    type="text"
+                    id="day"
+                    placeholder="DD"
+                    maxlength="2"
+                    class="input-data"
+                    pattern="\d*"
+                    required
+                  />
+                  <label for="day">DIA</label>
+                </div>
+                <div class="input-item">
+                  <input
+                    type="text"
+                    id="month"
+                    placeholder="MM"
+                    maxlength="2"
+                    class="input-data"
+                    pattern="\d*"
+                    required
+                  />
+                  <label for="month">MÊS</label>
+                </div>
+                <div class="input-item">
+                  <input
+                    type="text"
+                    id="year"
+                    placeholder="AAAA"
+                    maxlength="4"
+                    class="input-data"
+                    pattern="\d*"
+                    required
+                  />
+                  <label for="year">ANO</label>
+                </div>
+              </div>
+              <div id="day-error" class="error"></div>
+              <div id="month-error" class="error"></div>
+              <div id="year-error" class="error"></div>
+            </div> 
+          </div>
+          <h2 class="fifth-row-title">Regras de Elegibilidade</h2> 
+          <div class="fifth-row">
+              <div class="column">
+                  <!-- Dropdown MCC -->
+                  <div id="mcc-dropdown" class="MCC-dropdown">
+                      <button class="dropdown-button">Escolha uma Categoria MCC</button>
+                      <div class="dropdown-content">
+                          <div class="dropdown-item">
+                              <span>Alimentos (MCC 5812)</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                          <div class="dropdown-item">
+                              <span>Transporte (MCC 4111)</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                          <div class="dropdown-item">
+                              <span>Saúde (MCC 8011)</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="selected-options">
+                      <ul id="selected-items-mcc"></ul>
+                  </div>
+              </div>
+
+              <!-- Dropdown Online -->
+              <div class="column">
+                  <div id="online-dropdown" class="MCC-dropdown">
+                      <button class="dropdown-button">Escolha uma Categoria Online</button>
+                      <div class="dropdown-content">
+                          <div class="dropdown-item">
+                              <span>PAN</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="selected-options">
+                      <ul id="selected-items-online"></ul>
+                  </div>
+              </div>
+
+              <!-- Dropdown Presencial -->
+              <div class="column">
+                  <div id="presencial-dropdown" class="MCC-dropdown">
+                      <button class="dropdown-button">Escolha uma Categoria Presencial</button>
+                      <div class="dropdown-content">
+                          <div class="dropdown-item">
+                              <span>PAN</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                          <div class="dropdown-item">
+                              <span>SWIPE</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                          <div class="dropdown-item">
+                              <span>NFC</span>
+                              <label class="switch">
+                                  <input type="checkbox">
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="selected-options">
+                      <ul id="selected-items-presencial"></ul>
+                  </div>
+              </div>
+          </div>
+      <div class="salvar_continuar" type="submit">Salvar & Continuar</div>
+  </form>
+</div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>

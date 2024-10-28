@@ -1,0 +1,731 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #00b766;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+hr {
+    margin: 20px 0px;
+}
+
+form h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 1280px;  
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.first-row {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.input-group-nome-desc {
+    position: relative;
+    margin: 20px 0;
+    width: 100%;
+    width: 300px;
+}
+
+.input-group-nome-desc label {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    transition: all 0.2s;
+    cursor: text;
+}
+
+.input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    font-size: 18px;
+    outline: 0;
+}
+
+form .input::placeholder {
+    color: transparent;
+}
+
+form .input::placeholder,
+form .input:focus::placeholder {
+    transition: all 0.5s;
+}
+
+form .input:focus::placeholder {
+    color: #cccc6c;
+    font-size: 20px;
+}
+
+form .input-group-nome-desc .input:focus ~ label,
+form .input-group-nome-desc .input:valid ~ label {
+    transform: translateY(-28px);
+    font-size: 20px;
+    color: #00b766;
+}
+
+form .input-cashback-limit .input:focus ~ label,
+form .input-cashback-limit .input:valid ~ label {
+    transform: translateY(-28px);
+    font-size: 20px;
+    color: #00b766;
+}
+
+form .input-group-data .input:focus ~ label,
+form .input-group-data .input:valid ~ label {
+    transform: translateY(-28px);
+    font-size: 20px;
+    color: #00b766;
+}
+
+form {
+    background-color: #fff;
+    max-width: 100%;
+    max-height: 5000px;
+    padding: 60px;
+    border-radius: 40px;
+    margin: 20px;
+}
+
+.input-mans {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.salvar_continuar {
+    width: 100%;
+    height: 44px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #00b766;
+    color: #fff;
+}
+
+.salvar_continuar:hover {
+    background-color: darkgreen;
+}
+
+.upload-imagem {
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.texto-imagem {
+    padding: 10px;
+}
+
+.upload-btn {
+    background-color: #00b766;
+    margin: 0 20px;
+    padding: 5px 0;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.second-row {
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.second-row div {
+    margin: 5px;
+}
+
+.modelo-cartao {
+    width: 100%;
+}
+
+.opcao {
+    /* width: 100%; */ /* Se descomentado, irá alinhar os switches a extrema direita e as opcoes a extrema esquerda */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    gap: 20px;
+}
+
+.opcao div p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.12s ease-in;
+}
+
+.opcoes_cartao {
+    flex-direction: column;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.opcoes_cartao h2 {
+    font-weight: 700;
+    white-space: nowrap;
+    padding-bottom: 10px;
+}
+
+.opcoes_cartao p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.switch-grande {
+    right: 0;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 0;
+}
+
+/* Escondendo o checkbox */
+.switch-grande input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Slider */
+.slider-grande {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+/* Ponto dentro do switch */
+.slider-grande:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider-grande {
+    background-color: #00b766;
+}
+
+input:checked + .slider-grande:before {
+    transform: translateX(26px);
+}
+
+.mecanicas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mecanicas h2 {
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.opcoes-mecanicas {
+    flex-direction: column;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.opcoes-mecanicas p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.third-row {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.third-row h2 {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.opcoes-categ {
+    flex-direction: column;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.opcoes-categ p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.opcoes-premios {
+    flex-direction: column;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.opcoes-premios p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* 
+.teste {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+} */
+
+.fourth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: 100%;
+}
+
+.fourth-row h2 {
+    font-weight: 700;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.input-cashback-limit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    width: 350px;
+    padding-top: 15px;
+}
+
+.input-cashback-limit label {
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    transition: all 0.2s;
+    cursor: text;
+}
+
+.input-group-data {
+    position: relative;
+    margin: 35px 0;
+    width: 100%;
+    width: 150px;
+}
+
+.input-group-data label {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    transition: all 0.2s;
+    cursor: text;
+    white-space: nowrap;
+}
+
+.input-data {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.fifth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.fifth-row h2 {
+    font-weight: 700;
+}
+
+.fifth-row-title {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 40px;
+}
+/* Estilos do Dropdown */
+.MCC-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.dropdown-button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #005e52;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.dropdown-button:hover {
+    background-color: #00b766;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    max-height: 100px;
+    overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.MCC-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilos dos Itens do Dropdown */
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #00b766;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Estilos para Itens Selecionados */
+.selected-options {
+    max-height: 80px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.selected-options p {
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    font-size: 14px;
+}
+
+.selected-options ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.selected-options li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #e0e0f8;
+    border-radius: 5px;
+    margin: 4px 0;
+    position: relative;
+}
+
+.selected-options li .remove-item {
+    font-weight: bold;
+    font-size: 16px;
+    color: #ff4d4f;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.selected-options li .remove-item:hover {
+    color: #d9363e;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00b766;
+}
+
+.remove-item {
+    right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer; 
+    position: absolute;
+}
+
+.texto-ativo {
+    color: lightgreen; /* Cor desejada */
+}
+
+.div-switch-grande {
+    margin-left: auto;
+}
+
+.PAN {
+    flex-direction: column;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    gap: 20px;
+}
+
+.PAN p {
+    width: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #005e52;
+    font-weight: bold;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-group-data {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+}
+
+.input-item input::placeholder {
+    color: transparent;
+}
+
+.input-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 55px;
+}
+  
+.input-item label {
+    position: absolute;
+    left: 22px;
+    bottom: 16px;
+    transition: all 0.2s;
+    cursor: text;
+    font-size: 16px;
+    color: black;
+}
+
+form .input-item .input-data::placeholder,
+form .input-item .input-data:focus::placeholder {
+    transition: all 0.5s;
+}
+
+form .input-item .input-data:focus::placeholder {
+    color: #CCC;
+    font-size: 16px;
+}
+
+form .input-group-data .input-item .input-data:focus ~ label,
+form .input-group-data .input-item .input-data:valid ~ label {
+    transform: translateY(-18px);
+    font-size: 16px;
+    color: #00b766;
+}
+
+.input-data {
+    width: 100%;
+    padding: 20px 0 10px 0;
+    border: solid #ccc;
+    text-align: center;
+    font-size: 18px;
+    outline: 0;
+    transition: padding-top 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-group-data.active .input-data {
+    padding-top: 30px; /* Aumenta o padding-top quando o contêiner está ativo */
+}
+
+#day {
+    border-right: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#month {
+    border-right: 0;
+    border-left: 0;
+}
+
+#year {
+    border-left: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.input-item {
+    position: relative; /* Necessário para posicionar o pseudo-elemento */
+  }
+  
+.input-item + .input-item::before {
+    content: '';
+    position: absolute;
+    top: 55%; /* Coloca a linha no meio verticalmente */
+    left: -4px; /* Ajusta a posição para a esquerda */
+    width: 1%;
+    transform: translateY(50%); /* Centraliza no eixo vertical */
+    width: 18px; /* Largura do risco */
+    height: 2px; /* Altura do risco */
+    background-color: #ccc; /* Cor do risco */
+    transform: rotate(90deg);
+}
