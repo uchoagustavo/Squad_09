@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banese Card Login</title>
-    <link rel="stylesheet" href="/csss/login.css">
+    <link rel="stylesheet" href="../csss/login.css">
     <link rel="shortcut icon" href="static/img/Dashboard/logo1.jpeg" type="image/x-icon">
 </head>
 <body>
     <div class="container">
         <div class="login-box">
             <div class="login-form">
-                <img src="static/img/baneseCard.png" alt="Banese Card Logo" class="logo">
+                <img src="../imgs/dashboard/baneseCard.png" alt="Banese Card Logo" class="logo">
                 <h2>Gestor</h2>
                 <form id="loginForm">
                     <label for="id-gestor">ID do Gestor</label>
@@ -42,7 +42,7 @@
 
             if (users[username] && users[username] === password) {
                 // Redirecionar para a nova página
-                window.location.href = '/htmls/dashboard.html'; // Caminho correto para a página desejada
+                window.location.href = 'dashboard.html'; // Caminho correto para a página desejada
             } else {
                 document.getElementById('message').textContent = 'Credenciais inválidas. Tente novamente.';
             }
