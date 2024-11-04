@@ -1,0 +1,365 @@
+.container-campanhas {
+    display: flex;
+    justify-content: center; /* Centraliza os itens */
+    align-items: center;
+    flex-wrap: wrap; /* Ajuste para definir o espaçamento entre os itens */
+    margin-left: 50px;
+}
+
+.campanha {
+    background-color: #55a630; /* Cor de fundo da campanha */
+    margin: 20px;
+    padding: 20px; /* Adiciona preenchimento ao redor do conteúdo */
+    border-radius: 1em; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.filtros {
+    max-width: 1280px;
+}
+
+.filtros-first-row {
+    display: flex;
+    justify-self: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.input-group-status {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos na vertical */
+    width: 260px;
+}
+
+.input, .select-status {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    background-color: #ccc;
+}
+
+.input-group-status label {
+    margin-bottom: 5px; /* Espaçamento entre o label e o input */
+}
+
+.select-status {
+    width: 100%;
+    padding: 11px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.div-pesquisar-filtro {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    padding: 15px;
+}
+
+.pesquisar-filtro {
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    border: 0 transparent;
+    border-radius: 10px;
+    background-color: #00b766;
+    color: black;
+    transition: 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pesquisar-filtro:hover {
+    color: #fff;
+}
+
+.titulo-tabela {
+    text-align: center;
+    /* background-color: #00b766;
+    border: 1 solid #00b766; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px 0 5px;
+    font-size: 28px;
+}
+
+.card {
+    display: flex;
+    width: 100%; /* Ajusta a largura para ocupar todo o espaço disponível */
+    padding: 5px;
+    color: #f8f6f0; /* Cor do texto */
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha itens ao topo do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde qualquer conteúdo que extrapole os limites do card */
+    margin-bottom: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.tabela-pesquisa {
+    border: 1px transparent;
+    border-radius: 10px;
+    margin: 20px auto; /* Centraliza o container na página */
+    background-color:  #55a630;
+    max-width: 800px; /* Limita a largura do container */
+    color: white;
+}
+
+.input-group-nome-desc {
+    display: flex;
+    position: relative;
+    width: 100%;
+    width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.input-group-nome-desc label {
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+    transition: all 0.2s;
+    cursor: text;
+    color: black;
+}
+
+.input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    outline: 0;
+    box-sizing: border-box;
+    height: 49px;
+    background-color: #ccc;
+}
+
+form .input::placeholder {
+    color: transparent;
+}
+
+form .input::placeholder,
+form .input:focus::placeholder {
+    transition: all 0.5s;
+}
+
+form .input:focus::placeholder {
+    color: black;
+    font-size: 18px;
+}
+
+form .input-group-nome-desc .input:focus ~ label,
+form .input-group-nome-desc .input:valid ~ label {
+    transform: translate(-5px, -36px);
+    font-size: 18px;
+    color: #f8f6f0;
+}
+
+.start-data {
+    display: flex;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.end-data {
+    display: flex;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.data-titles-row {
+    display: flex;
+    font-size: 18px;
+    padding-top: 2px;
+    margin-top: 5px;
+}
+
+.start-data-title {
+    text-align: right;
+    margin-left: 90px;
+    margin-right: 220px;
+}
+
+.end-data-title {
+    text-align: left;
+}
+
+.input-group-data {
+    display: flex;
+    margin: 1px 0;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.input-group-data label {
+    position: absolute;
+    transition: all 0.2s;
+    cursor: text;
+    white-space: nowrap;
+}
+
+.input-item input::placeholder {
+    color: transparent;
+}
+
+.input-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 45px;
+}
+  
+.input-item label {
+    left: 22px;
+    transition: all 0.2s;
+    cursor: text;
+    font-size: 16px;
+    color: black;
+}
+
+form .input-item .input-data::placeholder,
+form .input-item .input-data:focus::placeholder {
+    transition: all 0.5s;
+}
+
+form .input-item .input-data:focus::placeholder {
+    color: #CCC;
+    font-size: 16px;
+}
+
+form .input-group-data .input-item .input-data:focus ~ label,
+form .input-group-data .input-item .input-data:valid ~ label {
+    transform: translateY(-14px);
+    font-size: 14px;
+    color: #00b766;
+}
+
+.input-data {
+    border: 2px solid #ccc;
+    width: 100px;
+    padding: 15px 0 5px 0;
+    text-align: center;
+    font-size: 18px;
+    outline: 0;
+    transition: padding-top 0.3s ease;
+    box-sizing: border-box;
+    background-color: #ccc;
+}
+
+#start-day, #end-day {
+    border-right: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#start-month, #end-month {
+    border-right: 0;
+    border-left: 0;
+}
+
+#start-year, #end-year {
+    border-left: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.input-item {
+    position: relative;
+}
+  
+.input-item + .input-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    width: 1%;
+    transform: translateY(50%); 
+    width: 18px;
+    height: 1px; 
+    background-color: black; 
+    transform: rotate(90deg);
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-button {
+    padding: 10px;
+    margin: 0 0 10px 0;
+    background-color: #00b766;
+    font-size: 18px;
+    border: 0 transparent;
+    border-radius: 10px;
+    color: black;
+    font-weight: 600;
+    transition: 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-button:hover {
+    color: white;
+    background-color: #00b766;
+}
+
+.nameDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    word-wrap: break-word;
+    gap: 15px;
+    text-align: left-bottom;
+}
+
+.nameDesc p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    display: flex;
+    white-space: normal;
+    line-height: 1.5em; /* Ajuste para corresponder ao espaçamento entre linhas */
+    max-height: 4.3em; /* Limita a altura para 2 linhas (2 * line-height) */
+    width: 100%; /* Adiciona reticências ao final */
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+    height: 130px;
+    width: 180px;
+    margin: 10px;
+    border-radius: 0.5em;
+    flex-shrink: 0;
+}
+
+.img img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0.5em; /* Bordas arredondadas da imagem */
+    border: 0 transparent; /* Adiciona uma borda branca de 3 pixels */
+}

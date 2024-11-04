@@ -1,0 +1,294 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Linking Google Fonts for icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"/>
+        <title>New model</title>
+        <link rel="stylesheet" href="../csss/styles.css">
+        <link rel="stylesheet" href="../csss/sidebar.css">
+    </head>
+    <body>
+        <aside class="sidebar">
+            <!-- Side bar header -->
+            <header class="sidebar-header">
+                <a href="#" class="header-logo">
+                    <img src="../imgs/logo1.jpeg" alt="Banese Card">
+                </a>
+                <button class="toggler sidebar-toggler">
+                    <span class="material-symbols-rounded">chevron_left</span>
+                </button>
+                <button class="toggler menu-toggler">
+                    <span class="material-symbols-rounded">menu</span>
+                </button>
+            </header>
+
+            <nav class="sidebar-nav">
+                <!-- primary top nav -->
+                <ul class="nav-list primary-nav">
+                    <li class="nav-item">
+                        <a href="../htmls/criar_campanha.html" class="nav-link">
+                        <span class="material-symbols-rounded">add</span>
+                        <span class="nav-label">Criar campanha</span>
+                        </a>
+                        <span class="nav-tooltip">Criar campanha</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">calendar_today</span>
+                        <span class="nav-label">Calendar</span>
+                        </a>
+                        <span class="nav-tooltip">Calendar</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">notifications</span>
+                        <span class="nav-label">Notifications</span>
+                        </a>
+                        <span class="nav-tooltip">Notifications</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">group</span>
+                        <span class="nav-label">Team</span>
+                        </a>
+                        <span class="nav-tooltip">Team</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">analytics</span>
+                        <span class="nav-label">Analytics</span>
+                        </a>
+                        <span class="nav-tooltip">Analytics</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">star</span>
+                        <span class="nav-label">Bookmarks</span>
+                        </a>
+                        <span class="nav-tooltip">Bookmarks</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">settings</span>
+                        <span class="nav-label">Settings</span>
+                        </a>
+                        <span class="nav-tooltip">Settings</span>
+                    </li>
+                </ul>
+                <!-- second bottom nav -->
+                <ul class="nav-list secondary-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">account_circle</span>
+                        <span class="nav-label">Perfil</span>
+                        </a>
+                        <span class="nav-tooltip">Perfil</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <span class="material-symbols-rounded">logout</span>
+                        <span class="nav-label">Sair</span>
+                        </a>
+                        <span class="nav-tooltip">Sair</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Início da tabela de pesquisa -->
+        <div class="tabela-pesquisa">
+            <p class="titulo-tabela">Pesquisar Campanhas</p>
+            <form>
+                <div class="filtros">
+                    <!-- Campo de entrada: Nome da Campanha -->
+                    <div class="filtros-first-row">
+                        <div class="input-group-nome-desc">
+                            <input
+                            type="text"
+                            id="nome-campanha"
+                            placeholder="Digite o nome da campanha"
+                            class="input"
+                            required
+                            />
+                            <label for="nome-campanha">Nome da campanha</label>
+                        </div>
+                        <div class="input-group-status">
+                            <label for="status">Status:</label>
+                            <select id="status" class="select-status">
+                                <option value="">Selecione...</option>
+                                <option value="ativa">Ativa</option>
+                                <option value="inativa">Inativa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="data-titles-row">
+                        <div>
+                            <p class="start-data-title">Data Início:</p>
+                        </div>
+                        <div>
+                            <p class="end-data-title">Data Término:</p>
+                        </div>
+                    </div>
+                    <!-- Campo de entrada: Data Início -->
+                    <div class="input-group-data">
+                        <div class="start-data">
+                            <div class="input-item">
+                            <input
+                                type="text"
+                                id="start-day"
+                                placeholder="DD"
+                                maxlength="2"
+                                class="input-data"
+                                pattern="\d*"
+                                required
+                            />
+                            <label for="start-day">DIA</label>
+                            </div>
+                            <div class="input-item">
+                            <input
+                                type="text"
+                                id="start-month"
+                                placeholder="MM"
+                                maxlength="2"
+                                class="input-data"
+                                pattern="\d*"
+                                required
+                            />
+                            <label for="start-month">MÊS</label>
+                            </div>
+                            <div class="input-item">
+                            <input
+                                type="text"
+                                id="start-year"
+                                placeholder="AAAA"
+                                maxlength="4"
+                                class="input-data"
+                                pattern="\d*"
+                                required
+                            />
+                            <label for="start-year">ANO</label>
+                            </div>
+                        </div>
+                        <div id="start-day-error" class="error"></div>
+                        <div id="start-month-error" class="error"></div>
+                        <div id="start-year-error" class="error"></div>
+                    <div class="end-data">
+                        <div class="input-item">
+                        <input
+                            type="text"
+                            id="end-day"
+                            placeholder="DD"
+                            maxlength="2"
+                            class="input-data"
+                            pattern="\d*"
+                            required
+                        />
+                        <label for="end-day">DIA</label>
+                        </div>
+                        <div class="input-item">
+                        <input
+                            type="text"
+                            id="end-month"
+                            placeholder="MM"
+                            maxlength="2"
+                            class="input-data"
+                            pattern="\d*"
+                            required
+                        />
+                        <label for="end-month">MÊS</label>
+                        </div>
+                        <div class="input-item">
+                        <input
+                            type="text"
+                            id="end-year"
+                            placeholder="AAAA"
+                            maxlength="4"
+                            class="input-data"
+                            pattern="\d*"
+                            required
+                        />
+                        <label for="end-year">ANO</label>
+                        </div>
+                    <div id="end-day-error" class="error"></div>
+                    <div id="end-month-error" class="error"></div>
+                    <div id="end-year-error" class="error"></div>
+                    </div>
+                </div>
+                    <div class="div-pesquisar-filtro">
+                        <button onclick="pesquisarCampanhas()" type="submit" class="pesquisar-filtro">Pesquisar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Fim da tabela de pesquisa -->
+        <div class="container-campanhas">
+            <div class="campanha">
+                <div class="card">
+                    <div class="nameDesc">
+                        <h1>Campanha 1</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. aoidnwaiod awdawdawdawdawdawdawddawaaaLorem ipsum dolor, sit amet consectetur adipisicing elit. aoidnwaiod awdawdawdawdawdawdawddawaaa</p>
+                    </div>
+                    <div class="img">
+                        <img src="imgs/example.jpg"/>
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <button type="submit" class="card-button see-details">Ver detalhes</button>
+                    <button type="submit" class="card-button see-report">Ver relatórios</button>
+                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
+                </div>
+            </div>
+            <div class="campanha">
+                <div class="card">
+                    <div class="nameDesc">
+                        <h1>Campanha 2</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="img">
+                        <img/>
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <button type="submit" class="card-button see-details">Ver detalhes</button>
+                    <button type="submit" class="card-button see-report">Ver relatórios</button>
+                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
+                </div>
+            </div>
+            <div class="campanha">
+                <div class="card">
+                    <div class="nameDesc">
+                        <h1>Campanha 3</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="img">
+                        <img/>
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <button type="submit" class="card-button see-details">Ver detalhes</button>
+                    <button type="submit" class="card-button see-report">Ver relatórios</button>
+                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
+                </div>
+            </div>
+            <div class="campanha">
+                <div class="card">
+                    <div class="nameDesc">
+                        <h1>Campanha 4</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="img">
+                        <img/>
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <button type="submit" class="card-button see-details">Ver detalhes</button>
+                    <button type="submit" class="card-button see-report">Ver relatórios</button>
+                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
+                </div>
+            </div>
+        </div>
+        <script src="../jss/sidebar.js"></script>
+        <script src="../jss/data.js"></script>
+    </body>
+    </html>

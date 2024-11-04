@@ -1,94 +1,29 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('.dropdown-item input[type="checkbox"]');
-    const selectedItems = document.getElementById('selected-items');
-    let paragraphCreated = false;
+// Configura os inputs e validações
+const startInputs = {
+    day: document.getElementById('start-day'),
+    month: document.getElementById('start-month'),
+    year: document.getElementById('start-year')
+};
+const endInputs = {
+    day: document.getElementById('end-day'),
+    month: document.getElementById('end-month'),
+    year: document.getElementById('end-year')
+};
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const dropdownItem = this.closest('.dropdown-item');
-            const itemText = dropdownItem.querySelector('span').textContent.trim();
-
-            if (this.checked) {
-                if (!paragraphCreated) {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = "MCC's selecionados:";
-                    paragraph.id = 'mcc-paragraph';
-                    selectedItems.parentNode.insertBefore(paragraph, selectedItems);
-                    paragraphCreated = true;
-                }
-                // Se o checkbox for marcado, cria um novo item na lista
-                if (!document.querySelector(`li[data-value="${itemText}"]`)) {
-                    const listItem = document.createElement('li');
-                    listItem.setAttribute('data-value', itemText);
-                    listItem.innerHTML = `${itemText} <span class="remove-item" style="color: red; cursor: pointer;">&times;</span>`;
-                    
-                    // Adiciona o evento de click para remover o item
-                    listItem.querySelector('.remove-item').addEventListener('click', function() {
-                        const checkboxToUncheck = dropdownItem.querySelector('input[type="checkbox"]');
-                        checkboxToUncheck.checked = false;
-                        selectedItems.removeChild(listItem);
-
-                        // Verifica se ainda há itens selecionados, se não houver, remove o parágrafo
-                        if (selectedItems.children.length === 0 && paragraphCreated) {
-                            const paragraphToRemove = document.getElementById('mcc-paragraph');
-                            if (paragraphToRemove) {
-                                paragraphToRemove.remove();
-                            }
-                            paragraphCreated = false;
-                        }
-                    });
-
-                    selectedItems.appendChild(listItem);
-                }
-            } else {
-                // Se o checkbox for desmarcado, remove o item da lista
-                const listItemToRemove = document.querySelector(`li[data-value="${itemText}"]`);
-                if (listItemToRemove) {
-                    selectedItems.removeChild(listItemToRemove);
-                }
-                // Verifica se ainda há itens selecionados, se não houver, remove o parágrafo
-                if (selectedItems.children.length === 0 && paragraphCreated) {
-                    const paragraphToRemove = document.getElementById('mcc-paragraph');
-                    if (paragraphToRemove) {
-                        paragraphToRemove.remove();
-                    }
-                    paragraphCreated = false;
-                }
-            }
-        });
-    });
-});
-
-const inputGroup = document.querySelector('.input-group-data');
-const inputs = document.querySelectorAll('.input-data');
-const dia = document.getElementById('day')
-
-//Validações:
-// Obter data atual
 const today = new Date();
-const currentDay = today.getDate();
-const currentMonth = today.getMonth() + 1; // Janeiro é 0
 const currentYear = today.getFullYear();
+const currentMonth = today.getMonth() + 1;
+const currentDay = today.getDate();
 
 function isAnoBissexto(year) {
     return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 }
 
 function validateDay(day, month, year) {
-     // Verifica se o dia é um número válido (1 a 31)
-     if (isNaN(day) || day < 1 || day > 31) {
-        return false; // Dia inválido se for menor que 1 ou maior que 31
-    }
-
-    // Verifica os limites de dias para cada mês
-    if (month) {
-        if (month === 2) { // Fevereiro
-            return day <= (isAnoBissexto(year) ? 29 : 28); // Verifica se é bissexto
-        } else if ([4, 6, 9, 11].includes(month)) { // Meses com 30 dias
-            return day <= 30;
-        }
-    }
-    return true; // Se o mês não estiver definido, apenas verificar se o dia é válido
+    if (isNaN(day) || day < 1 || day > 31) return false;
+    if (month === 2) return day <= (isAnoBissexto(year) ? 29 : 28);
+    if ([4, 6, 9, 11].includes(month)) return day <= 30;
+    return true;
 }
 
 function validateMonth(month) {
@@ -96,133 +31,20 @@ function validateMonth(month) {
 }
 
 function validateYear(year) {
-    return year >= currentYear
+    return year >= currentYear;
 }
 
 function isDateValid(day, month, year) {
-    // Se o ano é o mesmo, o mês só pode ser o mesmo ou posterior
     if (year === currentYear) {
-        if (month < currentMonth) return false; // Mês anterior
-        if (month === currentMonth && day < currentDay) return false; // Dia anterior no mês atual
+        if (month < currentMonth) return false;
+        if (month === currentMonth && day < currentDay) return false;
     }
-    
-    // Cria uma nova data para validação
     const inputDate = new Date(year, month - 1, day);
-    return inputDate >= today; // Verifica se a data inserida é igual ou posterior à data atual
+    return inputDate >= today;
 }
-function validateInputs() {
-    const dayInput = document.getElementById('day');
-    const monthInput = document.getElementById('month');
-    const yearInput = document.getElementById('year');
-
-    const day = parseInt(dayInput.value);
-    const month = parseInt(monthInput.value);
-    const year = parseInt(yearInput.value);
-
-    // Limpar mensagens de erro
-    document.getElementById('day-error').textContent = '';
-    document.getElementById('month-error').textContent = '';
-    document.getElementById('year-error').textContent = '';
-
-    let isValid = true;
-
-    // Verificar se todos os campos contêm apenas números
-    if (!/^\d*$/.test(dayInput.value)) {
-        document.getElementById('day-error').textContent = 'Digite apenas números!';
-        dayInput.value = ''; // Limpa o campo se tiver letras
-        isValid = false;
-    } else {
-        document.getElementById('day-error').textContent = ''; // Limpa a mensagem de erro
-    }
-
-    if (!/^\d*$/.test(monthInput.value)) {
-        document.getElementById('month-error').textContent = 'Digite apenas números!';
-        monthInput.value = ''; // Limpa o campo se tiver letras
-        isValid = false;
-    } else {
-        document.getElementById('month-error').textContent = ''; // Limpa a mensagem de erro
-    }
-
-    if (!/^\d*$/.test(yearInput.value)) {
-        document.getElementById('year-error').textContent = 'Digite apenas números!';
-        yearInput.value = ''; // Limpa o campo se tiver letras
-        isValid = false;
-    } else {
-        document.getElementById('year-error').textContent = ''; // Limpa a mensagem de erro
-    }
-
-    // Validações separadas
-    if (dayInput.value) {
-        if (day < 1 || day > 31) {
-            document.getElementById('day-error').textContent = 'Dia inválido.';
-            isValid = false;
-        } else if (!validateDay(day, month, year)) {
-            document.getElementById('day-error').textContent = 'Dia inválido para o mês.';
-            isValid = false;
-        }
-    }
-
-    if (monthInput.value && !validateMonth(month)) {
-        document.getElementById('month-error').textContent = 'Mês inválido (1-12).';
-        isValid = false;
-    }
-
-    if (yearInput.value.length === 4) { // Verifica se 4 dígitos foram digitados
-        if (!validateYear(year)) {
-            document.getElementById('year-error').textContent = 'O ano não pode ser anterior ao ano atual.';
-            isValid = false;
-        }
-    }
-
-    // Verifica se a data é válida apenas se todos os campos estão preenchidos
-     if (dayInput.value && monthInput.value && yearInput.value.length === 4) {
-        if (!isDateValid(day, month, year)) {
-            document.getElementById('day-error').textContent = 'A data não pode ser anterior à data atual.';
-            isValid = false;
-        }
-    }
-
-    // Verifica se algum campo está preenchido para manter a classe 'active'
-    const anyFilled = Array.from(inputs).some(input => input.value.trim() !== '');
-    if (anyFilled) {
-        inputGroup.classList.add('active'); // Mantém a classe se pelo menos um campo estiver preenchido
-    } else {
-        inputGroup.classList.remove('active'); // Remove a classe se todos os campos estiverem vazios
-    }
-}
-
-// Função para restringir a entrada a números
-function restrictInput(event) {
-    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-    
-    // Permite apenas números e as teclas de controle
-    if (!allowedKeys.includes(event.key) && (event.key < '0' || event.key > '9')) {
-        event.preventDefault(); // Impede a entrada
-    }
-    
-    // Verifica se o valor atual mais o novo caractere excede o maxlength
-    const input = event.target;
-    if (input.value.length >= input.maxLength) {
-        event.preventDefault(); // Impede a entrada se já atingiu o maxlength
-    }
-}
-
-// Adiciona eventos de input
-inputs.forEach(input => {
-    input.addEventListener('focus', () => {
-        inputGroup.classList.add('active'); // Adiciona a classe 'active' ao focar
-    });
-
-    input.addEventListener('input', validateInputs); // Valida ao digitar
-});
-
-// Verificação ao perder o foco
-inputs.forEach(input => {
-    input.addEventListener('blur', validateInputs);
-});
 
 document.addEventListener('DOMContentLoaded', function() {
-    // IDs dos dropdowns
+    // Função de dropdown para itens selecionados
     const dropdownIds = {
         'mcc-dropdown': 'selected-items-mcc',
         'online-dropdown': 'selected-items-online',
@@ -230,11 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     Object.keys(dropdownIds).forEach(dropdownId => {
-        // Seleciona o dropdown e seus itens
         const dropdown = document.getElementById(dropdownId);
         const checkboxes = dropdown.querySelectorAll('.dropdown-item input[type="checkbox"]');
         const selectedItems = document.getElementById(dropdownIds[dropdownId]);
-        let paragraphCreated = false;
+
+        // Função para atualizar o parágrafo "Selecionados"
+        const updateParagraph = () => {
+            let paragraph = selectedItems.previousElementSibling;
+            if (!paragraph || paragraph.tagName !== "P") {
+                paragraph = document.createElement('p');
+                paragraph.textContent = "Selecionados:";
+                selectedItems.parentNode.insertBefore(paragraph, selectedItems);
+            }
+            paragraph.style.display = selectedItems.children.length > 0 ? "block" : "none";
+        };
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', function() {
@@ -242,66 +73,336 @@ document.addEventListener('DOMContentLoaded', function() {
                 const itemText = dropdownItem.querySelector('span').textContent.trim();
 
                 if (this.checked) {
-                    if (!paragraphCreated) {
-                        const paragraph = document.createElement('p');
-                        paragraph.textContent = "Selecionados:";
-                        paragraph.id = `mcc-paragraph-${dropdownId}`;
-                        selectedItems.parentNode.insertBefore(paragraph, selectedItems);
-                        paragraphCreated = true;
-                    }
-                    // Se o checkbox for marcado, cria um novo item na lista
+                    // Adiciona item à lista, caso ainda não esteja
                     if (!selectedItems.querySelector(`li[data-value="${itemText}"]`)) {
                         const listItem = document.createElement('li');
                         listItem.setAttribute('data-value', itemText);
                         listItem.innerHTML = `${itemText} <span class="remove-item" style="color: red; cursor: pointer;">&times;</span>`;
 
-                        // Adiciona o evento de click para remover o item
+                        // Evento para remover item ao clicar no "x"
                         listItem.querySelector('.remove-item').addEventListener('click', function() {
-                            const checkboxToUncheck = dropdownItem.querySelector('input[type="checkbox"]');
-                            checkboxToUncheck.checked = false;
+                            checkbox.checked = false;
                             selectedItems.removeChild(listItem);
-
-                            // Verifica se ainda há itens selecionados, se não houver, remove o parágrafo
-                            if (selectedItems.children.length === 0 && paragraphCreated) {
-                                const paragraphToRemove = document.getElementById(`mcc-paragraph-${dropdownId}`);
-                                if (paragraphToRemove) {
-                                    paragraphToRemove.remove();
-                                }
-                                paragraphCreated = false;
-                            }
+                            updateParagraph();
                         });
 
                         selectedItems.appendChild(listItem);
+                        updateParagraph();
                     }
                 } else {
-                    // Se o checkbox for desmarcado, remove o item da lista
+                    // Remove item desmarcado da lista
                     const listItemToRemove = selectedItems.querySelector(`li[data-value="${itemText}"]`);
                     if (listItemToRemove) {
                         selectedItems.removeChild(listItemToRemove);
                     }
-                    // Verifica se ainda há itens selecionados, se não houver, remove o parágrafo
-                    if (selectedItems.children.length === 0 && paragraphCreated) {
-                        const paragraphToRemove = document.getElementById(`mcc-paragraph-${dropdownId}`);
-                        if (paragraphToRemove) {
-                            paragraphToRemove.remove();
-                        }
-                        paragraphCreated = false;
-                    }
+                    updateParagraph();
                 }
             });
         });
     });
+
+    // Função de validação de data
+    const setupDateValidation = (inputGroup, errorPrefix) => {
+        const dayInput = inputGroup.day;
+        const monthInput = inputGroup.month;
+        const yearInput = inputGroup.year;
+
+        // Restringe entrada para números
+        [dayInput, monthInput, yearInput].forEach(input => {
+            input.addEventListener('keydown', function(event) {
+                if (!/\d/.test(event.key) && !['Backspace', 'Delete', 'Tab'].includes(event.key)) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // Validações de data
+        const validateInputs = () => {
+            const day = parseInt(dayInput.value);
+            const month = parseInt(monthInput.value);
+            const year = parseInt(yearInput.value);
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth() + 1;
+            const currentDay = today.getDate();
+
+            // Limpa erros anteriores
+            document.getElementById(`${errorPrefix}-day-error`).textContent = '';
+            document.getElementById(`${errorPrefix}-month-error`).textContent = '';
+            document.getElementById(`${errorPrefix}-year-error`).textContent = '';
+
+            let isValid = true;
+
+            if (day < 1 || day > 31 || (month === 2 && day > 29) || ([4, 6, 9, 11].includes(month) && day > 30)) {
+                document.getElementById(`${errorPrefix}-day-error`).textContent = 'Dia inválido para o mês.';
+                isValid = false;
+            }
+
+            if (month < 1 || month > 12) {
+                document.getElementById(`${errorPrefix}-month-error`).textContent = 'Mês inválido (1-12).';
+                isValid = false;
+            }
+
+            if (year < currentYear || (year === currentYear && (month < currentMonth || (month === currentMonth && day < currentDay)))) {
+                document.getElementById(`${errorPrefix}-day-error`).textContent = 'Data não pode ser anterior a hoje.';
+                isValid = false;
+            }
+
+            return isValid;
+        };
+
+        // Eventos de input e validação
+        dayInput.addEventListener('input', validateInputs);
+        monthInput.addEventListener('input', validateInputs);
+        yearInput.addEventListener('input', validateInputs);
+    };
+
+    // Configuração dos inputs de data
+    setupDateValidation({
+        day: document.getElementById('start-day'),
+        month: document.getElementById('start-month'),
+        year: document.getElementById('start-year')
+    }, 'start');
+
+    setupDateValidation({
+        day: document.getElementById('end-day'),
+        month: document.getElementById('end-month'),
+        year: document.getElementById('end-year')
+    }, 'end');
+
+    // Função para alternar cor do parágrafo com o switch
+    window.toggleCartao = function(paragraphId, toggleSwitch) {
+        const switchTexto = document.getElementById(paragraphId);
+        switchTexto.style.color = toggleSwitch.checked ? '#fff' : 'black';
+    };
+});
+// Função para alternar a exibição das opções de crédito em fatura
+function toggleCreditOption() {
+    const toggle10 = document.getElementById('toggle10');
+    const toggle11 = document.getElementById('toggle11');
+    const creditOptions = document.getElementById('credit-options');
+    const liveloPointsContainer = document.getElementById('livelo-points-container');
+    const creditInputContainer = document.getElementById('credit-input-container');
+    const creditTitle = document.getElementById('10');
+    const liveloTitle = document.getElementById('11');
+    
+    if (toggle10.checked) {
+        toggle11.checked = false; // Desmarca Pontos Livelo se Desconto em Fatura for selecionado
+        creditOptions.style.display = 'block';
+        liveloPointsContainer.style.display = 'none';
+        creditTitle.style.color = 'white';
+        liveloTitle.style.color = 'black';
+        
+    } else {
+        // Esconde o input de crédito e as opções de tipo
+        creditInputContainer.style.display = 'none';
+        creditOptions.style.display = 'none';
+        creditOptions.style.display = 'none';
+        creditTitle.style.color = 'black';
+    }
+
+}
+
+// Função para selecionar o tipo de crédito em fatura
+function selecionarTipoCredito(tipo) {
+    const creditInputContainer = document.getElementById('credit-input-container');
+    const creditInputLabel = document.getElementById('credit-input-label');
+    
+    
+    if (tipo === 'valor-fixo') {
+        creditInputLabel.innerText = 'Valor do Cashback:';
+        creditInputContainer.style.display = 'block';
+    } else if (tipo === 'percentual-compra') {
+        creditInputLabel.innerText = 'Percentual da Campanha:';
+        creditInputContainer.style.display = 'block';
+    }
+}
+
+// Função para alternar a exibição da opção de Pontos Livelo
+function toggleLiveloPoints() {
+    const toggle10 = document.getElementById('toggle10');
+    const toggle11 = document.getElementById('toggle11');
+    const liveloPointsContainer = document.getElementById('livelo-points-container');
+    const liveloTitle = document.getElementById('11');
+    const creditTitle = document.getElementById('10');
+
+    if (toggle11.checked) {
+        toggle10.checked = false; // Desmarca Desconto em Fatura se Pontos Livelo for selecionado
+        liveloPointsContainer.style.display = 'block';
+        liveloTitle.style.color = 'white';
+        creditTitle.style.color = 'black';
+    } else {
+        liveloPointsContainer.style.display = 'none';
+        liveloTitle.style.color = 'black';
+    }
+
+    // Limpa a seleção anterior do tipo de crédito
+    clearCreditSelection();
+}
+
+// Limpa a seleção de tipo de crédito
+function clearCreditSelection() {
+    const creditInputContainer = document.getElementById('credit-input-container');
+    const creditOptions = document.getElementById('credit-options');
+
+    // Esconde o input de crédito e as opções de tipo
+    creditInputContainer.style.display = 'none';
+    creditOptions.style.display = 'none';
+}
+
+function previewImage(files) {
+    const previewContainer = document.getElementById('preview-container');
+    const preview = document.getElementById('preview');
+
+    const file = files[0];
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewContainer.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+// Função para inicializar a funcionalidade de arrastar e soltar
+function initDragAndDrop() {
+    const dropZone = document.getElementById('upload-container');
+    const fileInput = document.getElementById('upload-image');
+
+    // Evento para quando o arquivo é arrastado para dentro da zona
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    // Evento para quando o arquivo sai da zona sem soltar
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+    });
+
+    // Evento para soltar o arquivo
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.classList.remove('dragover');
+        
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            previewImage(files);  // Chama a função de pré-visualização da imagem
+        }
+    });
+
+    // Evento de clique para abrir o seletor de arquivos
+    dropZone.addEventListener('click', () => {
+        fileInput.click();
+    });
+}
+
+// Função para pré-visualizar a imagem
+function previewImage(files) {
+    const previewContainer = document.getElementById('preview-container');
+    const preview = document.getElementById('preview');
+    const removeImageBtn = document.getElementById('remove-image');
+    const textoImagem = document.querySelector('.texto-imagem');
+    const customUploadBtn = document.querySelector('.custom-upload-btn');
+
+    const file = files[0];
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewContainer.style.display = 'block';  // Mostra a imagem
+            removeImageBtn.style.display = 'block';    // Mostra o botão de remover
+            textoImagem.style.display = 'none';         // Oculta o texto inicial
+            customUploadBtn.style.display = 'none';     // Oculta o botão de upload
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Função para remover a imagem
+function removeImage() {
+    event.stopPropagation(); // Impede a propagação para evitar que o seletor de arquivos seja acionado
+
+    const previewContainer = document.getElementById('preview-container');
+    const preview = document.getElementById('preview');
+    const removeImageBtn = document.getElementById('remove-image');
+    const textoImagem = document.querySelector('.texto-imagem');
+    const customUploadBtn = document.querySelector('.custom-upload-btn');
+
+    preview.src = '';                          // Remove a fonte da imagem
+    previewContainer.style.display = 'none';   // Oculta o contêiner de pré-visualização
+    removeImageBtn.style.display = 'none';     // Oculta o botão de remover
+    textoImagem.style.display = 'block';       // Mostra o texto inicial
+    customUploadBtn.style.display = 'inline-block'; // Mostra o botão de upload
+}
+
+// Seleciona todos os checkboxes e textos dos grupos de mecânicas e fatores
+const mecanicasCheckboxes = document.querySelectorAll('.opcoes-mecanicas .opcao input[type="checkbox"]');
+const fatoresCheckboxes = document.querySelectorAll('.fator_categ .opcao input[type="checkbox"]');
+
+// Função para garantir seleção única dentro de cada grupo e mudar a cor do texto
+function selecionarUnico(grupoCheckboxes, checkboxSelecionado) {
+    grupoCheckboxes.forEach(checkbox => {
+        const texto = checkbox.closest('.opcao').querySelector('p'); // Encontra o elemento <p> de texto
+        if (checkbox === checkboxSelecionado && checkbox.checked) {
+            texto.style.color = 'white';
+        } else {
+            checkbox.checked = false; // Desmarca os outros checkboxes
+            texto.style.color = 'black'; // Reseta a cor do texto
+        }
+    });
+}
+
+// Aplica a função de seleção única para os eventos de mudança nos grupos de mecânicas e fatores
+mecanicasCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        selecionarUnico(mecanicasCheckboxes, this);
+    });
+});
+
+fatoresCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        selecionarUnico(fatoresCheckboxes, this);
+    });
+});
+
+// Função para salvar os dados da campanha
+function salvarCampanha() {
+    // Obtendo os valores dos campos de entrada
+    const nome = document.getElementById('nomeCampanha').value;
+    const descricao = document.getElementById('descricaoCampanha').value;
+    const foto = document.getElementById('fotoCampanha').value;
+
+    // Criando um objeto de campanha
+    const campanha = {
+        nome: nome,
+        descricao: descricao,
+        foto: foto
+    };
+
+    // Obtendo campanhas do localStorage ou iniciando como um array vazio
+    const campanhas = JSON.parse(localStorage.getItem('campanhas')) || [];
+    
+    // Adicionando a nova campanha
+    campanhas.push(campanha);
+
+    // Salvando o array atualizado de volta no localStorage
+    localStorage.setItem('campanhas', JSON.stringify(campanhas));
+
+    // Opcional: Limpar os campos após o salvamento
+    document.getElementById('nomeCampanha').value = '';
+    document.getElementById('descricaoCampanha').value = '';
+    document.getElementById('fotoCampanha').value = '';
+
+    // Exibir uma mensagem de sucesso (opcional)
+    alert('Campanha salva com sucesso!');
+}
+
+// Ligando a função ao botão "Salvar & Continuar"
+document.querySelector('.salvar_continuar').addEventListener('click', function(event) {
+    salvarCampanha();
 });
 
 
-function toggleCartao(paragraphId, toggleSwitch) {
-    const switchTexto = document.getElementById(paragraphId);
-
-    if (toggleSwitch.checked) {
-        setTimeout(() => {
-            switchTexto.style.color = '#90ee90';
-        }, 110);
-    } else {
-        switchTexto.style.color = '#fff';  // Cor padrão (preto)
-    }
-};
+// Inicializa a funcionalidade drag and drop ao carregar a página
+document.addEventListener('DOMContentLoaded', initDragAndDrop);

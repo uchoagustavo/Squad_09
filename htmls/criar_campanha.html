@@ -33,12 +33,21 @@
                 <label for="desc-campanha">Descrição da campanha</label>
               </div>
             </div>
-            <div class="upload-imagem">
-              <div class="texto-imagem">
-                <p>Arraste sua imagem aqui <br />ou</p>
-                <p class="upload-btn">Upload</p>
+            <div class="upload-imagem" id="upload-container">
+              <h4 class="texto-imagem">Arraste sua imagem aqui<br>ou</h4>
+              
+              <!-- Botão personalizado -->
+              <label for="upload-image" class="custom-upload-btn">Upload</label>
+              
+              <!-- Input real, escondido -->
+              <input type="file" id="upload-image" accept="image/*" onchange="previewImage(this.files)" style="display: none;" />
+              
+              <!-- Área de visualização -->
+              <div id="preview-container" style="display: none; position: relative;">
+                  <span id="remove-image" onclick="removeImage()">✖</span>
+                  <img id="preview" src="" alt="Pré-visualização da imagem" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;" />
               </div>
-            </div>
+          </div>
           </div>
           <div class="second-row">
             <div class="modelo-cartao">
@@ -159,31 +168,55 @@
             </div>
             <div class="premios">
               <div class="opcoes-premios">
-                <h2>Quais serão os prêmios?</h2>
-                <div class="opcao">
-                  <div>
-                    <p id="10">Desconto em fatura</p>
+                  <h2>Qual será o prêmio?</h2>
+                  
+                  <!-- Opção de Desconto em Fatura -->
+                  <div class="opcao">
+                      <div>
+                          <p id="10">Crédito em fatura</p>
+                      </div>
+                      <div class="div-switch-grande">
+                          <label class="switch-grande">
+                              <input type="checkbox" id="toggle10" onchange="toggleCreditOption()" />
+                              <span class="slider-grande"></span>
+                          </label>
+                      </div>
                   </div>
-                  <div class="div-switch-grande">
-                    <label class="switch-grande">
-                      <input type="checkbox" id="toggle10" onchange="toggleCartao('10', this)" />
-                      <span class="slider-grande"></span>
-                    </label>
+                  
+                  <!-- Tipo de Crédito em Fatura - Botões para escolher entre Valor Fixo e Percentual -->
+                  <div id="credit-options" class="credit-choice">
+                      <h3>Tipo de crédito em fatura</h3>
+                      <button  type="button" id="valor-fixo-btn" onclick="selecionarTipoCredito('valor-fixo')">Valor Fixo</button>
+                      <span>ou</span>
+                      <button type="button" id="percentual-compra-btn" onclick="selecionarTipoCredito('percentual-compra')">Percentual da compra</button>
                   </div>
-                </div>
-                <div class="opcao">
-                  <div>
-                    <p id="11">Pontos Livelo</p>
+          
+                  <!-- Input para Valor do Cashback ou Percentual da Campanha -->
+                  <div id="credit-input-container" style="display: none; margin-top: 10px;">
+                      <label id="credit-input-label"></label>
+                      <input type="number" id="credit-input" placeholder="Digite o valor" required />
                   </div>
-                  <div class="div-switch-grande">
-                    <label class="switch-grande">
-                      <input type="checkbox" id="toggle11" onchange="toggleCartao('11', this)" />
-                      <span class="slider-grande"></span>
-                    </label>
+                  
+                  <!-- Opção de Pontos Livelo -->
+                  <div class="opcao">
+                      <div>
+                          <p id="11">Pontos Livelo</p>
+                      </div>
+                      <div class="div-switch-grande">
+                          <label class="switch-grande">
+                              <input type="checkbox" id="toggle11" onchange="toggleLiveloPoints()" />
+                              <span class="slider-grande"></span>
+                          </label>
+                      </div>
                   </div>
-                </div>
+          
+                  <!-- Input para Pontos por Real -->
+                  <div id="livelo-points-container" style="display: none; margin-top: 10px;">
+                      <label>Pontos por Real</label>
+                      <input type="number" id="livelo-points" placeholder="Digite os pontos por real" required />
+                  </div>
               </div>
-            </div>
+            </div>          
           </div>
           <div class="fourth-row">
             <div class="input-mans">
@@ -191,7 +224,7 @@
                 <input
                   type="text"
                   id="cashback-limit"
-                  placeholder="Ex: R$250,00 total, 15% ou 10 transações"
+                  placeholder="Ex: R$10.000,00"
                   class="input"
                   required
                 />
@@ -205,89 +238,91 @@
             <div class="periodo">
               <h2>Informe o Périodo</h2>
               <div class="div-data">
+                <p class="data-title">Data Inicío:</p>
                 <div class="input-group-data">
                   <div class="input-item">
                     <input
-                      type="text"
-                      id="day"
-                      placeholder="DD"
-                      maxlength="2"
-                      class="input-data"
-                      pattern="\d*"
-                      required
+                        type="text"
+                        id="start-day"
+                        placeholder="DD"
+                        maxlength="2"
+                        class="input-data"
+                        pattern="\d*"
+                        required
                     />
-                    <label for="day">DIA</label>
-                  </div>
-                  <div class="input-item">
+                    <label for="start-day">DIA</label>
+                    </div>
+                    <div class="input-item">
                     <input
-                      type="text"
-                      id="month"
-                      placeholder="MM"
-                      maxlength="2"
-                      class="input-data"
-                      pattern="\d*"
-                      required
+                        type="text"
+                        id="start-month"
+                        placeholder="MM"
+                        maxlength="2"
+                        class="input-data"
+                        pattern="\d*"
+                        required
                     />
-                    <label for="month">MÊS</label>
-                  </div>
-                  <div class="input-item">
+                    <label for="start-month">MÊS</label>
+                    </div>
+                    <div class="input-item">
                     <input
-                      type="text"
-                      id="year"
-                      placeholder="AAAA"
-                      maxlength="4"
-                      class="input-data"
-                      pattern="\d*"
-                      required
+                        type="text"
+                        id="start-year"
+                        placeholder="AAAA"
+                        maxlength="4"
+                        class="input-data"
+                        pattern="\d*"
+                        required
                     />
-                    <label for="year">ANO</label>
-                  </div>
+                    <label for="start-year">ANO</label>
+                    </div>
                 </div>
-                <div id="day-error" class="error"></div>
-                <div id="month-error" class="error"></div>
-                <div id="year-error" class="error"></div>
-              </div>
+                <div id="start-day-error" class="error"></div>
+                <div id="start-month-error" class="error"></div>
+                <div id="start-year-error" class="error"></div>
+                <div class="data-title">Data término:</div>
               <div class="input-group-data">
                 <div class="input-item">
                   <input
                     type="text"
-                    id="day"
+                    id="end-day"
                     placeholder="DD"
                     maxlength="2"
                     class="input-data"
                     pattern="\d*"
                     required
                   />
-                  <label for="day">DIA</label>
+                  <label for="end-day">DIA</label>
                 </div>
                 <div class="input-item">
                   <input
                     type="text"
-                    id="month"
+                    id="end-month"
                     placeholder="MM"
                     maxlength="2"
                     class="input-data"
                     pattern="\d*"
                     required
                   />
-                  <label for="month">MÊS</label>
+                  <label for="end-month">MÊS</label>
                 </div>
                 <div class="input-item">
                   <input
                     type="text"
-                    id="year"
+                    id="end-year"
                     placeholder="AAAA"
                     maxlength="4"
                     class="input-data"
                     pattern="\d*"
                     required
                   />
-                  <label for="year">ANO</label>
+                  <label for="end-year">ANO</label>
                 </div>
               </div>
-              <div id="day-error" class="error"></div>
-              <div id="month-error" class="error"></div>
-              <div id="year-error" class="error"></div>
+              </div>
+              <div id="end-day-error" class="error"></div>
+              <div id="end-month-error" class="error"></div>
+              <div id="end-year-error" class="error"></div>
             </div> 
           </div>
           <h2 class="fifth-row-title">Regras de Elegibilidade</h2> 
@@ -377,10 +412,11 @@
                   </div>
               </div>
           </div>
-      <div class="salvar_continuar" type="submit">Salvar & Continuar</div>
+          <button class="salvar_continuar" type="submit">Salvar & Continuar</button>
   </form>
 </div>
 </section>
-<script src="script.js"></script>
+  <script src="../jss/criar_campanha.js">
+</script>
 </body>
 </html>
