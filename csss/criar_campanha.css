@@ -522,6 +522,10 @@ input:checked + .slider-grande:before {
     color: #333;
 }
 
+.dropdown-item span {
+    padding: 10px;
+}
+
 .dropdown-item:hover {
     background-color: #f1f1f1;
 }
