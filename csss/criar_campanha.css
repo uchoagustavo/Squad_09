@@ -209,7 +209,7 @@ form {
 }
 
 .opcao {
-    /* width: 100%; */ /* Se descomentado, irá alinhar os switches a extrema direita e as opcoes a extrema esquerda */
+    width: 100%; /* Se descomentado, irá alinhar os switches a extrema direita e as opcoes a extrema esquerda */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -772,4 +772,10 @@ form .input-group-data .input-item .input-data:valid ~ label {
 
 .credit-choice {
     display: none;
+}
+
+/* Estilo para os botões ativos */
+button.ativo {
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Texto branco */
 }

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../csss/criar_campanha.css" />
   </head>
   <body>
+    <input type="hidden" name="tipo-credito" id="tipo-credito">
     <section>
       <div class="container">
         <form class="form-container">
@@ -194,7 +195,7 @@
                   <!-- Input para Valor do Cashback ou Percentual da Campanha -->
                   <div id="credit-input-container" style="display: none; margin-top: 10px;">
                       <label id="credit-input-label"></label>
-                      <input type="number" id="credit-input" placeholder="Digite o valor" required />
+                      <input type="number" id="credit-input" placeholder="Digite o valor" required disabled/>
                   </div>
                   
                   <!-- Opção de Pontos Livelo -->
@@ -213,7 +214,7 @@
                   <!-- Input para Pontos por Real -->
                   <div id="livelo-points-container" style="display: none; margin-top: 10px;">
                       <label>Pontos por Real</label>
-                      <input type="number" id="livelo-points" placeholder="Digite os pontos por real" required />
+                      <input type="number" id="livelo-points" name="PR" placeholder="Digite os pontos por real" required disabled/>
                   </div>
               </div>
             </div>          
@@ -362,7 +363,7 @@
 
               <!-- Dropdown Online -->
               <div class="column">
-                  <div id="online-dropdown" class="MCC-dropdown">
+                  <div id="entrada-dropdown" class="MCC-dropdown">
                       <button class="dropdown-button">Modos de entrada</button>
                       <div class="dropdown-content">
                           <div class="dropdown-item">
@@ -396,11 +397,13 @@
                       </div>
                   </div>
                   <div class="selected-options">
-                      <ul id="selected-items-online"></ul>
+                      <ul id="selected-items-entrada"></ul>
                   </div>
               </div>
           </div>
           <button class="salvar_continuar" type="submit">Salvar & Continuar</button>
+          <!-- Mensagem de sucesso -->
+          <div id="success-message" style="display: none; color: green; margin-top: 20px;">Campanha salva com sucesso!</div>
   </form>
 </div>
 </section>

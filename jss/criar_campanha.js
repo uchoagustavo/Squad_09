@@ -44,17 +44,20 @@ function isDateValid(day, month, year) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Função de dropdown para itens selecionados
     const dropdownIds = {
         'mcc-dropdown': 'selected-items-mcc',
-        'online-dropdown': 'selected-items-online',
+        'entrada-dropdown': 'selected-items-entrada',
         'presencial-dropdown': 'selected-items-presencial'
     };
 
     Object.keys(dropdownIds).forEach(dropdownId => {
         const dropdown = document.getElementById(dropdownId);
+        if (!dropdown) return;  // Verifica se o dropdown existe antes de continuar
+
         const checkboxes = dropdown.querySelectorAll('.dropdown-item input[type="checkbox"]');
         const selectedItems = document.getElementById(dropdownIds[dropdownId]);
+
+        if (!selectedItems) return;  // Verifica se a lista de itens selecionados existe
 
         // Função para atualizar o parágrafo "Selecionados"
         const updateParagraph = () => {
@@ -100,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
     // Função de validação de data
     const setupDateValidation = (inputGroup, errorPrefix) => {
         const dayInput = inputGroup.day;
@@ -203,20 +205,38 @@ function toggleCreditOption() {
 
 }
 
+let tipoCreditoSelecionado = ''; // Variável global para armazenar o tipo de crédito selecionado
+
 // Função para selecionar o tipo de crédito em fatura
 function selecionarTipoCredito(tipo) {
     const creditInputContainer = document.getElementById('credit-input-container');
+    const creditInput = document.getElementById('credit-input');
     const creditInputLabel = document.getElementById('credit-input-label');
-    
-    
+    const tipoCreditoInput = document.getElementById('tipo-credito'); // Agora estamos acessando o input oculto para armazenar o tipo
+
+    // Exibir o campo de input para valor ou percentual dependendo da escolha
     if (tipo === 'valor-fixo') {
-        creditInputLabel.innerText = 'Valor do Cashback:';
         creditInputContainer.style.display = 'block';
+        creditInput.disabled = false;
+        creditInputLabel.innerText = 'Valor Fixo';
+        tipoCreditoInput.value = 'valor-fixo';  // Atualiza o tipo selecionado no input oculto
     } else if (tipo === 'percentual-compra') {
-        creditInputLabel.innerText = 'Percentual da Campanha:';
         creditInputContainer.style.display = 'block';
+        creditInput.disabled = false;
+        creditInputLabel.innerText = 'Percentual da Compra';
+        tipoCreditoInput.value = 'percentual-compra';  // Atualiza o tipo selecionado no input oculto
+    }
+
+    // Resetar o campo de entrada quando não for uma opção selecionada
+    if (tipo === '') {
+        creditInputContainer.style.display = 'none';
+        creditInput.disabled = true;
+        tipoCreditoInput.value = '';  // Remove a seleção de tipo
     }
 }
+
+
+
 
 // Função para alternar a exibição da opção de Pontos Livelo
 function toggleLiveloPoints() {
@@ -225,15 +245,20 @@ function toggleLiveloPoints() {
     const liveloPointsContainer = document.getElementById('livelo-points-container');
     const liveloTitle = document.getElementById('11');
     const creditTitle = document.getElementById('10');
+    const liveloPointsInput = document.getElementById('livelo-points');
 
     if (toggle11.checked) {
         toggle10.checked = false; // Desmarca Desconto em Fatura se Pontos Livelo for selecionado
         liveloPointsContainer.style.display = 'block';
         liveloTitle.style.color = 'white';
         creditTitle.style.color = 'black';
+        liveloPointsInput.disabled = false;
+        liveloPointsInput.required = true;
     } else {
         liveloPointsContainer.style.display = 'none';
         liveloTitle.style.color = 'black';
+        liveloPointsInput.disabled = true;
+        liveloPointsInput.required = false;
     }
 
     // Limpa a seleção anterior do tipo de crédito
@@ -353,6 +378,19 @@ function selecionarUnico(grupoCheckboxes, checkboxSelecionado) {
     });
 }
 
+function toggleCartao(cartaId, toggleElement) {
+    // Seleciona o elemento <p> usando o id do cartão
+    const pElement = document.getElementById(cartaId);
+  
+    // Verifica se o checkbox está marcado
+    if (toggleElement.checked) {
+      // Altera a cor do texto do <p> para branco quando o checkbox estiver marcado
+      pElement.style.color = 'white';
+    } else {
+      // Restaura a cor do texto do <p> para a cor original (preta, por exemplo) quando o checkbox não estiver marcado
+      pElement.style.color = 'black'; // ou a cor que você preferir
+    }
+  }
 // Aplica a função de seleção única para os eventos de mudança nos grupos de mecânicas e fatores
 mecanicasCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', function() {
@@ -365,44 +403,6 @@ fatoresCheckboxes.forEach(checkbox => {
         selecionarUnico(fatoresCheckboxes, this);
     });
 });
-
-// Função para salvar os dados da campanha
-function salvarCampanha() {
-    // Obtendo os valores dos campos de entrada
-    const nome = document.getElementById('nomeCampanha').value;
-    const descricao = document.getElementById('descricaoCampanha').value;
-    const foto = document.getElementById('fotoCampanha').value;
-
-    // Criando um objeto de campanha
-    const campanha = {
-        nome: nome,
-        descricao: descricao,
-        foto: foto
-    };
-
-    // Obtendo campanhas do localStorage ou iniciando como um array vazio
-    const campanhas = JSON.parse(localStorage.getItem('campanhas')) || [];
-    
-    // Adicionando a nova campanha
-    campanhas.push(campanha);
-
-    // Salvando o array atualizado de volta no localStorage
-    localStorage.setItem('campanhas', JSON.stringify(campanhas));
-
-    // Opcional: Limpar os campos após o salvamento
-    document.getElementById('nomeCampanha').value = '';
-    document.getElementById('descricaoCampanha').value = '';
-    document.getElementById('fotoCampanha').value = '';
-
-    // Exibir uma mensagem de sucesso (opcional)
-    alert('Campanha salva com sucesso!');
-}
-
-// Ligando a função ao botão "Salvar & Continuar"
-document.querySelector('.salvar_continuar').addEventListener('click', function(event) {
-    salvarCampanha();
-});
-
 
 // Inicializa a funcionalidade drag and drop ao carregar a página
 document.addEventListener('DOMContentLoaded', initDragAndDrop);
