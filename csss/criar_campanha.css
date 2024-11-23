@@ -776,6 +776,36 @@ form .input-group-data .input-item .input-data:valid ~ label {
 
 /* Estilo para os botões ativos */
 button.ativo {
-    background-color: #4CAF50; /* Cor de fundo verde */
     color: white; /* Texto branco */
 }
+
+.choices {
+    margin: 10px;
+}
+
+#credit-input-container {
+    flex-direction: column;
+}
+
+.premio-buttons {
+    background-color: #00b766;
+    border: 0;
+    padding: 5px;
+    transition: 0.2s ease;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.premio-buttons:hover {
+    color: #fff;
+}
+
+.credit-choice h3 {
+    text-align: center;
+}
+
+
+.credit-choice button.selected {
+    color: white;
+    border: 2px solid #005e52; /* Borda branca */
+  }

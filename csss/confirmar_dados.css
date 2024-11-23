@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #005e52;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1280px;  
+    padding: 20px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: #f5f5dc;
+    max-width: 100%;
+    max-height: 5000px;
+    padding: 60px;
+    border-radius: 40px;
+    margin: 20px;
+}
+
+form h1 {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+hr {
+    margin: 20px 0px;
+}
+
+.first-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 15px;
+}
+
+.img img {
+    max-width: 100%; /* Limita a largura máxima ao tamanho do contêiner */
+    max-height: 100%; /* Limita a altura máxima ao tamanho do contêiner */
+    display: block; /* Remove espaçamento indesejado em elementos inline */
+    object-fit: contain; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza a imagem, opcional */
+}
+
+
+.upload-imagem {
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+}
+
+.nomeDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.second-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.third-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.fourth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: 100%;
+}
+
+.fifth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    height: 100%;
+}
+
+.sixth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.cartoes, .mecanica, .categorizacao, .premio, .limiteCashback, .dataInicio, .estabelecimentosComerciais, .dataTermino, .MCCS, .modosEntrada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.cartoesTitle, .mecanicaTitle, .categorizacaoTitle, .premioTitle, .limiteCashbackTitle, .dataInicioTitle, .estabelecimentosComerciaisTitle, .dataTerminoTitle, .MCCSTitle, .modosEntradaTitle {
+    margin-bottom: 10px;
+    text-wrap: nowrap;
+    text-align: justify;
+}
+
+.cartoesCampanha h3, .mecanicaCampanha h3, .categorizacaoCampanha h3, .premioCampanha h3, .limiteCashbackCampanha h3, .dataInicioCampanha h3, .estabelecimentosComerciaisCampanha h3, .dataTerminoCampanha h3, .MCCSCampanha h3, .modosEntradaCampanha h3 {
+    padding: 5px;
+}
+
+.MCCSCampanha, .modosEntradaCampanha {
+    height: 80px;
+    overflow-y: auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.salvar_continuar {
+    width: 70%;
+    height: 44px;
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #00b766;
+    color: black;
+}
+
+.editar_campanha {
+    width: 30%;
+    height: 44px;
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: orange;
+    color: black;
+}
+
+.salvar_continuar:hover {
+    color: #fff;
+    transition: 0.4s ease;
+}
+
+.editar_campanha:hover {
+    color: #fff;
+    transition: 0.4s ease;
+}
+
+.escolhas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap: nowrap;
+}
+
+.escolhas h4 {
+    text-align: center;
+    align-items: center;
+}
+
+.confirmacao {
+    width: 30%;
+    height: 44px;
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: green;
+    color: black;
+}
+
+.negacao {
+    width: 30%;
+    height: 44px;
+    margin: 20px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    background-color: red;
+    color: black;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00b766;
+}
+
+/* Estilo da mensagem de sucesso */
+.mensagem_sucesso {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-family: "Montserrat", sans-serif;
+    color: #00b761;
+    text-shadow: 3px 3px 5px rgba(16, 59, 17, 0.6);
+    text-align: center;
+    height: 100vh;
+    flex-direction: column;
+}

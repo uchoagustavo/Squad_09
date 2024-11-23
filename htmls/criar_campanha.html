@@ -2,9 +2,97 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"/>
     <link rel="stylesheet" href="../csss/criar_campanha.css" />
+    <link rel="stylesheet" href="../csss/sidebar.css">
   </head>
   <body>
+    <aside class="sidebar">
+      <!-- Side bar header -->
+      <header class="sidebar-header">
+          <a href="#" class="header-logo">
+              <img src="../imgs/logo1.jpeg" alt="Banese Card">
+          </a>
+          <button class="toggler sidebar-toggler">
+              <span class="material-symbols-rounded">chevron_left</span>
+          </button>
+          <button class="toggler menu-toggler">
+              <span class="material-symbols-rounded">menu</span>
+          </button>
+      </header>
+
+      <nav class="sidebar-nav">
+          <!-- primary top nav -->
+          <ul class="nav-list primary-nav">
+              <li class="nav-item">
+                  <a href="../index.html" class="nav-link">
+                    <span class="material-symbols-rounded">home</span>
+                  <span class="nav-label">Home</span>
+                  </a>
+                  <span class="nav-tooltip">Home</span>
+              </li>
+              <li class="nav-item">
+                  <a href="htmls/criar_campanha.html" class="nav-link">
+                  <span class="material-symbols-rounded">add</span>
+                  <span class="nav-label">Criar campanha</span>
+                  </a>
+                  <span class="nav-tooltip">Criar campanha</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">notifications</span>
+                  <span class="nav-label">Notificações</span>
+                  </a>
+                  <span class="nav-tooltip">Notificações</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">group</span>
+                  <span class="nav-label">Gestores</span>
+                  </a>
+                  <span class="nav-tooltip">Gestores</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">analytics</span>
+                  <span class="nav-label">Analytics</span>
+                  </a>
+                  <span class="nav-tooltip">Analytics</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">star</span>
+                  <span class="nav-label">Minhas Campanhas</span>
+                  </a>
+                  <span class="nav-tooltip">Minhas Campanhas</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">settings</span>
+                  <span class="nav-label">Configurações</span>
+                  </a>
+                  <span class="nav-tooltip">Configurações</span>
+              </li>
+          </ul>
+          <!-- second bottom nav -->
+          <ul class="nav-list secondary-nav">
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">account_circle</span>
+                  <span class="nav-label">Perfil</span>
+                  </a>
+                  <span class="nav-tooltip">Perfil</span>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <span class="material-symbols-rounded">logout</span>
+                  <span class="nav-label">Sair</span>
+                  </a>
+                  <span class="nav-tooltip">Sair</span>
+              </li>
+          </ul>
+      </nav>
+  </aside>
     <input type="hidden" name="tipo-credito" id="tipo-credito">
     <section>
       <div class="container">
@@ -187,14 +275,16 @@
                   <!-- Tipo de Crédito em Fatura - Botões para escolher entre Valor Fixo e Percentual -->
                   <div id="credit-options" class="credit-choice">
                       <h3>Tipo de crédito em fatura</h3>
-                      <button  type="button" id="valor-fixo-btn" onclick="selecionarTipoCredito('valor-fixo')">Valor Fixo</button>
-                      <span>ou</span>
-                      <button type="button" id="percentual-compra-btn" onclick="selecionarTipoCredito('percentual-compra')">Percentual da compra</button>
+                      <div class="choices">
+                        <button  type="button" class="premio-buttons" id="valor-fixo-btn" onclick="selecionarTipoCredito('valor-fixo')">Valor Fixo</button>
+                        <span>ou</span>
+                        <button type="button" class="premio-buttons" id="percentual-compra-btn" onclick="selecionarTipoCredito('percentual-compra')">Percentual da compra</button>
+                      </div>
                   </div>
           
                   <!-- Input para Valor do Cashback ou Percentual da Campanha -->
-                  <div id="credit-input-container" style="display: none; margin-top: 10px;">
-                      <label id="credit-input-label"></label>
+                  <div id="credit-input-container" style="display: none;">
+                      <p id="credit-input-label"></p>
                       <input type="number" id="credit-input" placeholder="Digite o valor" required disabled/>
                   </div>
                   
@@ -213,7 +303,7 @@
           
                   <!-- Input para Pontos por Real -->
                   <div id="livelo-points-container" style="display: none; margin-top: 10px;">
-                      <label>Pontos por Real</label>
+                      <label class="premio-buttons" >Pontos por Real</label>
                       <input type="number" id="livelo-points" name="PR" placeholder="Digite os pontos por real" required disabled/>
                   </div>
               </div>
@@ -334,26 +424,26 @@
                       <button class="dropdown-button">Escolha uma Categoria MCC</button>
                       <div class="dropdown-content">
                           <div class="dropdown-item">
-                              <span>Alimentos (MCC 5812)</span>
-                              <label class="switch">
-                                  <input type="checkbox">
-                                  <span class="slider round"></span>
-                              </label>
+                            <span>Alimentos (MCC 5812)</span>
+                            <label class="switch">
+                                <input type="checkbox" id="mccAlimentos">
+                                <span class="slider round"></span>
+                            </label>
                           </div>
                           <div class="dropdown-item">
-                              <span>Transporte (MCC 4111)</span>
-                              <label class="switch">
-                                  <input type="checkbox">
-                                  <span class="slider round"></span>
-                              </label>
+                            <span>Transporte (MCC 4111)</span>
+                            <label class="switch">
+                                <input type="checkbox" id="mccTransporte">
+                                <span class="slider round"></span>
+                            </label>
                           </div>
                           <div class="dropdown-item">
-                              <span>Saúde (MCC 8011)</span>
-                              <label class="switch">
-                                  <input type="checkbox">
-                                  <span class="slider round"></span>
-                              </label>
-                          </div>
+                            <span>Saúde (MCC 8011)</span>
+                            <label class="switch">
+                                <input type="checkbox" id="mccSaude">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                       </div>
                   </div>
                   <div class="selected-options">
@@ -364,36 +454,36 @@
               <!-- Dropdown Online -->
               <div class="column">
                   <div id="entrada-dropdown" class="MCC-dropdown">
-                      <button class="dropdown-button">Modos de entrada</button>
+                      <button class="dropdown-button">Escolha um(s) Modos de entrada</button>
                       <div class="dropdown-content">
                           <div class="dropdown-item">
-                              <span>E-commerce</span>
-                              <label class="switch">
-                                  <input type="checkbox">
-                                  <span class="slider round"></span>
-                              </label>
+                            <span>E-commerce</span>
+                            <label class="switch">
+                                <input type="checkbox" id="entradaEcommerce">
+                                <span class="slider round"></span>
+                            </label>
                           </div>
                           <div class="dropdown-item">
                             <span>Chip e senha</span>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="entradaChipSenha">
                                 <span class="slider round"></span>
                             </label>
                           </div>
                           <div class="dropdown-item">
                             <span>Contactless</span>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="entradaContactless">
                                 <span class="slider round"></span>
                             </label>
                           </div>
                           <div class="dropdown-item">
                             <span>Contactless com senha</span>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="entradaContactlessSenha">
                                 <span class="slider round"></span>
                             </label>
-                          </div>
+                        </div>
                       </div>
                   </div>
                   <div class="selected-options">
@@ -401,7 +491,7 @@
                   </div>
               </div>
           </div>
-          <button class="salvar_continuar" type="submit">Salvar & Continuar</button>
+          <button class="salvar_continuar" type="submit" onclick="window.location.href='confirmar_dados.html'">Salvar & Continuar</button>
           <!-- Mensagem de sucesso -->
           <div id="success-message" style="display: none; color: green; margin-top: 20px;">Campanha salva com sucesso!</div>
   </form>
@@ -409,5 +499,6 @@
 </section>
   <script src="../jss/criar_campanha.js"></script>
   <script src="../jss/salvar_campanha.js"></script>
+  <script src="../jss/sidebar.js"></script>
 </body>
 </html>

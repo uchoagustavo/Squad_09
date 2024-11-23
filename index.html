@@ -28,6 +28,13 @@
                 <!-- primary top nav -->
                 <ul class="nav-list primary-nav">
                     <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                          <span class="material-symbols-rounded">home</span>
+                        <span class="nav-label">Home</span>
+                        </a>
+                        <span class="nav-tooltip">Home</span>
+                    </li>
+                    <li class="nav-item">
                         <a href="htmls/criar_campanha.html" class="nav-link">
                         <span class="material-symbols-rounded">add</span>
                         <span class="nav-label">Criar campanha</span>
@@ -36,24 +43,17 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                        <span class="material-symbols-rounded">calendar_today</span>
-                        <span class="nav-label">Calendar</span>
-                        </a>
-                        <span class="nav-tooltip">Calendar</span>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
                         <span class="material-symbols-rounded">notifications</span>
-                        <span class="nav-label">Notifications</span>
+                        <span class="nav-label">Notificações</span>
                         </a>
-                        <span class="nav-tooltip">Notifications</span>
+                        <span class="nav-tooltip">Notificações</span>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                         <span class="material-symbols-rounded">group</span>
-                        <span class="nav-label">Team</span>
+                        <span class="nav-label">Gestores</span>
                         </a>
-                        <span class="nav-tooltip">Team</span>
+                        <span class="nav-tooltip">Gestores</span>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -65,16 +65,16 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                         <span class="material-symbols-rounded">star</span>
-                        <span class="nav-label">Bookmarks</span>
+                        <span class="nav-label">Minhas Campanhas</span>
                         </a>
-                        <span class="nav-tooltip">Bookmarks</span>
+                        <span class="nav-tooltip">Minhas Campanhas</span>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                         <span class="material-symbols-rounded">settings</span>
-                        <span class="nav-label">Settings</span>
+                        <span class="nav-label">Configurações</span>
                         </a>
-                        <span class="nav-tooltip">Settings</span>
+                        <span class="nav-tooltip">Configurações</span>
                     </li>
                 </ul>
                 <!-- second bottom nav -->
@@ -222,71 +222,7 @@
             </form>
         </div>
         <!-- Fim da tabela de pesquisa -->
-        <div class="container-campanhas">
-            <div class="campanha">
-                <div class="card">
-                    <div class="nameDesc">
-                        <h1>Campanha 1</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. aoidnwaiod awdawdawdawdawdawdawddawaaaLorem ipsum dolor, sit amet consectetur adipisicing elit. aoidnwaiod awdawdawdawdawdawdawddawaaa</p>
-                    </div>
-                    <div class="img">
-                        <img src="imgs/example.jpg"/>
-                    </div>
-                </div>
-                <div class="card-buttons">
-                    <button type="submit" class="card-button see-details">Ver detalhes</button>
-                    <button type="submit" class="card-button see-report">Ver relatórios</button>
-                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
-                </div>
-            </div>
-            <div class="campanha">
-                <div class="card">
-                    <div class="nameDesc">
-                        <h1>Campanha 2</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="img">
-                        <img/>
-                    </div>
-                </div>
-                <div class="card-buttons">
-                    <button type="submit" class="card-button see-details">Ver detalhes</button>
-                    <button type="submit" class="card-button see-report">Ver relatórios</button>
-                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
-                </div>
-            </div>
-            <div class="campanha">
-                <div class="card">
-                    <div class="nameDesc">
-                        <h1>Campanha 3</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="img">
-                        <img/>
-                    </div>
-                </div>
-                <div class="card-buttons">
-                    <button type="submit" class="card-button see-details">Ver detalhes</button>
-                    <button type="submit" class="card-button see-report">Ver relatórios</button>
-                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
-                </div>
-            </div>
-            <div class="campanha">
-                <div class="card">
-                    <div class="nameDesc">
-                        <h1>Campanha 4</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="img">
-                        <img/>
-                    </div>
-                </div>
-                <div class="card-buttons">
-                    <button type="submit" class="card-button see-details">Ver detalhes</button>
-                    <button type="submit" class="card-button see-report">Ver relatórios</button>
-                    <button type="submit" class="card-button campaign-edit">Editar Campanha</button>
-                </div>
-            </div>
+        <div class="container-campanhas" id="campaigns-container">
         </div>
         <script src="jss/sidebar.js"></script>
         <script src="jss/data.js"></script>

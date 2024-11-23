@@ -3,7 +3,6 @@
     justify-content: center; /* Centraliza os itens */
     align-items: center;
     flex-wrap: wrap; /* Ajuste para definir o espaçamento entre os itens */
-    margin-left: 50px;
 }
 
 .campanha {
@@ -349,7 +348,6 @@ form .input-group-data .input-item .input-data:valid ~ label {
 .img {
     display: flex;
     justify-content: center;
-    background-color: blue;
     height: 130px;
     width: 180px;
     margin: 10px;

@@ -213,6 +213,16 @@ function selecionarTipoCredito(tipo) {
     const creditInput = document.getElementById('credit-input');
     const creditInputLabel = document.getElementById('credit-input-label');
     const tipoCreditoInput = document.getElementById('tipo-credito'); // Agora estamos acessando o input oculto para armazenar o tipo
+    // Remove a classe 'selected' de todos os botões
+    const buttons = document.querySelectorAll('#credit-options button');
+    buttons.forEach(button => button.classList.remove('selected'));
+
+    // Adiciona a classe 'selected' ao botão clicado
+    if (tipo === 'valor-fixo') {
+        document.getElementById('valor-fixo-btn').classList.add('selected');
+    } else if (tipo === 'percentual-compra') {
+        document.getElementById('percentual-compra-btn').classList.add('selected');
+    }
 
     // Exibir o campo de input para valor ou percentual dependendo da escolha
     if (tipo === 'valor-fixo') {
@@ -403,6 +413,8 @@ fatoresCheckboxes.forEach(checkbox => {
         selecionarUnico(fatoresCheckboxes, this);
     });
 });
+
+
 
 // Inicializa a funcionalidade drag and drop ao carregar a página
 document.addEventListener('DOMContentLoaded', initDragAndDrop);
