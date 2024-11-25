@@ -131,6 +131,10 @@ function editarCampanha(campaignId) {
     window.location.href = `htmls/criar_campanha.html?id=${campaignId}`;
 }
 
+function verDetalhes(campaignId) {
+    // Redireciona para a página de criação de campanha passando o ID
+    window.location.href = `htmls/detalhes.html?id=${campaignId}`;
+}
 
 // Chama a função para exibir as campanhas quando a página for carregada
 window.addEventListener('load', displayCampaigns);

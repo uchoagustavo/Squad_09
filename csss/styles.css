@@ -304,6 +304,10 @@ form .input-group-data .input-item .input-data:valid ~ label {
     gap: 10px;
 }
 
+.hidden {
+    display: none;
+}
+
 .card-button {
     padding: 10px;
     margin: 0 0 10px 0;
@@ -327,10 +331,8 @@ form .input-group-data .input-item .input-data:valid ~ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 400px;
-    word-wrap: break-word;
+    max-width: 300px;
     gap: 15px;
-    text-align: left-bottom;
 }
 
 .nameDesc p {
@@ -342,6 +344,17 @@ form .input-group-data .input-item .input-data:valid ~ label {
     white-space: normal;
     line-height: 1.5em; /* Ajuste para corresponder ao espaçamento entre linhas */
     max-height: 4.3em; /* Limita a altura para 2 linhas (2 * line-height) */
+    width: 100%; /* Adiciona reticências ao final */
+}
+
+.nameDesc h1 {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.5em; /* Ajuste para corresponder ao espaçamento entre linhas */
+    max-height: 1.3em; /* Limita a altura para 2 linhas (2 * line-height) */
     width: 100%; /* Adiciona reticências ao final */
 }
 

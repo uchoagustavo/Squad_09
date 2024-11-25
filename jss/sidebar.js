@@ -24,6 +24,19 @@ menuToggler.addEventListener("click", () => {
 //Adjust sidebar height on window resize
 window.addEventListener("resize", () => {
     if (window.innerWidth >= 1024) {
+        sidebar.classList.remove("collapsed");
+        sidebar.style.height = fullSidebarHeight;
+    } else {
+        sidebar.classList.remove("collapsed");
+        sidebar.style.height = "auto";
+        toggleMenu(sidebar.classList.contains("menu-active"));
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth >= 1024) {
+        sidebar.classList.add("collapsed")
         sidebar.style.height = fullSidebarHeight;
     } else {
         sidebar.classList.remove("collapsed");

@@ -211,34 +211,65 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Função para preencher os dropdowns
+        // Função para preencher os dropdowns com base nos dados salvos
     function preencherDropdown(map, items, dropdownId) {
         const selectedItemsList = document.querySelector(`#selected-items-${dropdownId}`);
         console.log(`Preenchendo dropdown para ${dropdownId}...`);
 
-        if (items) {
+        // Verifica se há itens para preencher
+        if (items && selectedItemsList) {
             items.forEach(item => {
                 console.log(`Verificando item: ${item}`);
+                
+                // Procura o item no mapa
                 for (let key in map) {
                     console.log(`Comparando item: ${item} com valor: ${map[key]} (chave: ${key})`);
+                    
                     if (map[key] === item) {
                         console.log(`Item encontrado! Marcando checkbox ${key} e adicionando à lista`);
+
+                        // Marca o checkbox correspondente
                         const checkbox = document.getElementById(key);
                         if (checkbox) {
                             checkbox.checked = true;
                             console.log(`Checkbox ${key} marcado.`);
+
+                            // Cria o item na lista "Selecionados"
+                            const listItem = document.createElement('li');
+                            listItem.setAttribute('data-value', map[key]);
+                            listItem.innerHTML = `${map[key]} <span class="remove-item" style="color: red; cursor: pointer;">&times;</span>`;
+
+                            // Adiciona evento para remover o item ao clicar no "x"
+                            listItem.querySelector('.remove-item').addEventListener('click', function () {
+                                checkbox.checked = false;
+                                selectedItemsList.removeChild(listItem);
+                                updateParagraph(selectedItemsList);
+                            });
+
+                            selectedItemsList.appendChild(listItem);
                         } else {
                             console.log(`Checkbox ${key} não encontrado.`);
                         }
-                        const listItem = document.createElement('li');
-                        listItem.textContent = map[key];
-                        selectedItemsList.appendChild(listItem);
                     }
                 }
             });
+
+            // Atualiza o parágrafo "Selecionados" após preencher
+            updateParagraph(selectedItemsList);
         } else {
             console.log('Nenhum item encontrado para preencher.');
         }
+    }
+
+    // Função para atualizar o parágrafo "Selecionados"
+    function updateParagraph(selectedItemsList) {
+        let paragraph = selectedItemsList.previousElementSibling;
+        if (!paragraph || paragraph.tagName !== "P") {
+            paragraph = document.createElement('p');
+            paragraph.textContent = "Selecionados:";
+            selectedItemsList.parentNode.insertBefore(paragraph, selectedItemsList);
+        }
+        paragraph.style.display = selectedItemsList.children.length > 0 ? "block" : "none";
     }
     // Verificar se há campanhas no localStorage
     if (campaigns.length > 0) {
@@ -258,30 +289,6 @@ document.addEventListener('DOMContentLoaded', function () {
         preencherToggles(maps.fatoresCategorizacao, editingCampaign.fatorCategorizacao);
         // Preencher os dropdowns MCC e Entrada
         
-        function getMCCSelections() {
-            const mccValues = [];
-            const mccItems = document.querySelectorAll('.MCC-dropdown .dropdown-item');
-        
-            mccItems.forEach(item => {
-                const checkbox = item.querySelector('input[type="checkbox"]');
-                if (checkbox && checkbox.checked) {
-                    const label = item.querySelector('span').textContent.trim(); // Garantir que não há espaços extras
-        
-                    // Log para verificar o valor do label
-                    console.log(`Label encontrado: ${label}`);
-                    
-                    // Verificando se o mccMap possui esse label
-                    if (mccMap[label]) {
-                        console.log(`Adicionando ao mccValues: ${mccMap[label]}`);
-                        mccValues.push(mccMap[label]);
-                    } else {
-                        console.log(`Nenhum valor encontrado no mccMap para: ${label}`);
-                    }
-                }
-            });
-        
-            return mccValues;
-        }
              
         // Preencher as datas
         if (editingCampaign.periodo) {
@@ -390,34 +397,65 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Função para preencher os dropdowns
+    // Função para preencher os dropdowns com base nos dados salvos
     function preencherDropdown(map, items, dropdownId) {
         const selectedItemsList = document.querySelector(`#selected-items-${dropdownId}`);
         console.log(`Preenchendo dropdown para ${dropdownId}...`);
 
-        if (items) {
+        // Verifica se há itens para preencher
+        if (items && selectedItemsList) {
             items.forEach(item => {
                 console.log(`Verificando item: ${item}`);
+                
+                // Procura o item no mapa
                 for (let key in map) {
                     console.log(`Comparando item: ${item} com valor: ${map[key]} (chave: ${key})`);
+                    
                     if (map[key] === item) {
                         console.log(`Item encontrado! Marcando checkbox ${key} e adicionando à lista`);
+
+                        // Marca o checkbox correspondente
                         const checkbox = document.getElementById(key);
                         if (checkbox) {
                             checkbox.checked = true;
                             console.log(`Checkbox ${key} marcado.`);
+
+                            // Cria o item na lista "Selecionados"
+                            const listItem = document.createElement('li');
+                            listItem.setAttribute('data-value', map[key]);
+                            listItem.innerHTML = `${map[key]} <span class="remove-item" style="color: red; cursor: pointer;">&times;</span>`;
+
+                            // Adiciona evento para remover o item ao clicar no "x"
+                            listItem.querySelector('.remove-item').addEventListener('click', function () {
+                                checkbox.checked = false;
+                                selectedItemsList.removeChild(listItem);
+                                updateParagraph(selectedItemsList);
+                            });
+
+                            selectedItemsList.appendChild(listItem);
                         } else {
                             console.log(`Checkbox ${key} não encontrado.`);
                         }
-                        const listItem = document.createElement('li');
-                        listItem.textContent = map[key];
-                        selectedItemsList.appendChild(listItem);
                     }
                 }
             });
+
+            // Atualiza o parágrafo "Selecionados" após preencher
+            updateParagraph(selectedItemsList);
         } else {
             console.log('Nenhum item encontrado para preencher.');
         }
+    }
+
+    // Função para atualizar o parágrafo "Selecionados"
+    function updateParagraph(selectedItemsList) {
+        let paragraph = selectedItemsList.previousElementSibling;
+        if (!paragraph || paragraph.tagName !== "P") {
+            paragraph = document.createElement('p');
+            paragraph.textContent = "Selecionados:";
+            selectedItemsList.parentNode.insertBefore(paragraph, selectedItemsList);
+        }
+        paragraph.style.display = selectedItemsList.children.length > 0 ? "block" : "none";
     }
     // Função para obter o ID da campanha a partir da URL
     function getCampaignIdFromURL() {
@@ -470,6 +508,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         document.getElementById('end-month').value = endMonth;
                         document.getElementById('end-year').value = endYear;
                     }
+                    
+                    if (campanha.imagem) {
+                        const imgElement = document.getElementById('imagem-campanha'); // ID ou seletor do elemento <img>
+                        if (imgElement) {
+                            imgElement.src = campanha.imagem; // Define a imagem com a string Base64
+                        } else {
+                            console.log('Elemento <img> não encontrado para carregar a imagem.');
+                        }
+                    }
+                    
 
                     // Preencher os campos de prêmios
                     if (campanha.premios && Object.keys(campanha.premios).length > 0) {
