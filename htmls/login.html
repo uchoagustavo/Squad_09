@@ -12,12 +12,27 @@
         <div class="login-box">
             <div class="login-form">
                 <img src="../imgs/dashboard/baneseCard.png" alt="Banese Card Logo" class="logo">
-                <h2>Gestor</h2>
                 <form id="loginForm">
-                    <label for="id-gestor">ID do Gestor</label>
-                    <input type="text" id="id-gestor" name="id-gestor" required>
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" required>
+                    <div class="input-gestor">
+                        <input
+                          type="text"
+                          id="id-gestor"
+                          placeholder="Digite o seu ID"
+                          class="input"
+                          required
+                        />
+                        <label for="id-gestor">ID Gestor</label>
+                    </div>
+                    <div class="input-gestor">
+                        <input
+                          type="password"
+                          id="senha"
+                          placeholder="Digite sua senha"
+                          class="input"
+                          required
+                        />
+                        <label for="senha">Senha</label>
+                    </div>
                     <button type="submit" class="sign-in-btn">Login</button>
                 </form>
                 <div id="message" style="color: red;"></div>
@@ -29,24 +44,59 @@
         </div>
     </div>
     <script>
-        const users = {
-            'usuario1': 'senha1',
-            'usuario2': 'senha2'
-        };
-
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita o envio padrão do formulário
-
-            const username = document.getElementById('id-gestor').value;
-            const password = document.getElementById('senha').value;
-
-            if (users[username] && users[username] === password) {
-                // Redirecionar para a nova página
-                window.location.href = 'dashboard.html'; // Caminho correto para a página desejada
-            } else {
-                document.getElementById('message').textContent = 'Credenciais inválidas. Tente novamente.';
-            }
+    
+            const username = document.getElementById('id-gestor').value; // id-gestor (nome de usuário)
+            const password = document.getElementById('senha').value; // Senha
+    
+            // Abrindo o banco de dados IndexedDB
+            const request = indexedDB.open("gestoresDB", 1);
+    
+            request.onerror = function(event) {
+                console.error("Erro ao abrir o banco de dados:", event.target.error);
+                document.getElementById('message').textContent = 'Erro ao acessar os dados do banco de dados.';
+            };
+    
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+                const transaction = db.transaction("gestores", "readonly");
+                const objectStore = transaction.objectStore("gestores");
+    
+                // Criando um índice para procurar pelo nome do gestor
+                const index = objectStore.index("nome");
+    
+                // Buscando o gestor pelo nome (id-gestor)
+                const getRequest = index.get(username);
+    
+                getRequest.onerror = function() {
+                    console.error("Erro ao acessar o índice para buscar o gestor.");
+                    document.getElementById('message').textContent = 'Erro ao acessar os dados do gestor.';
+                };
+    
+                getRequest.onsuccess = function() {
+                    const gestor = getRequest.result;
+    
+                    // Verificando se o gestor foi encontrado e a senha corresponde
+                    if (gestor) {
+                        if (gestor.senha === password) {
+                            // Salva o estado de autenticação no localStorage
+                            localStorage.setItem("isAuthenticated", "true");
+                            localStorage.setItem("gestorNome", gestor.nome);
+                            localStorage.setItem("gestorId", gestor.id);
+    
+                            // Redirecionar para a nova página
+                            window.location.href = "../index.html"; // Caminho correto para a página desejada
+                        } else {
+                            document.getElementById('message').textContent = 'Credenciais inválidas. Tente novamente.';
+                        }
+                    } else {
+                        document.getElementById('message').textContent = 'Gestor não encontrado.';
+                    }
+                };
+            };
         });
     </script>
+    
 </body>
 </html>

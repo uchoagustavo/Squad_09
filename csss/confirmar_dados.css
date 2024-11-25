@@ -13,6 +13,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .container {
@@ -22,16 +23,16 @@ body {
 }
 
 form {
-    background-color: #f5f5dc;
     max-width: 100%;
-    max-height: 5000px;
     padding: 60px;
     border-radius: 40px;
     margin: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 form h1 {
     text-align: center;
+    font-size: 2rem;
 }
 
 .hidden {
@@ -40,30 +41,49 @@ form h1 {
 
 hr {
     margin: 20px 0px;
+    border: 1px solid #fff;
 }
 
-.first-row {
+h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+.first-row, .second-row, .third-row, .fourth-row, .fifth-row, .sixth-row {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    margin-bottom: 20px;
 }
 
-.img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 15px;
+.first-row {
+    gap: 50px;
 }
 
-.img img {
-    max-width: 100%; /* Limita a largura máxima ao tamanho do contêiner */
-    max-height: 100%; /* Limita a altura máxima ao tamanho do contêiner */
-    display: block; /* Remove espaçamento indesejado em elementos inline */
-    object-fit: contain; /* Mantém a proporção da imagem */
-    margin: 0 auto; /* Centraliza a imagem, opcional */
+.second-row {
+    gap: 40px;
 }
 
+.third-row, .fourth-row {
+    gap: 30px;
+}
+
+.fifth-row {
+    gap: 50px;
+}
+
+.sixth-row {
+    gap: 40px;
+}
+
+.nomeDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 .upload-imagem {
     padding: 20px;
@@ -80,46 +100,26 @@ hr {
     position: relative;
 }
 
-.nomeDesc {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.nome-campanha, .descricao-campanha {
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: #006c5b;
+    border-radius: 8px;
 }
 
-.second-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
-.third-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.fourth-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+.img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
-.fifth-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    height: 100%;
-}
-
-.sixth-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+.img img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 .cartoes, .mecanica, .categorizacao, .premio, .limiteCashback, .dataInicio, .estabelecimentosComerciais, .dataTermino, .MCCS, .modosEntrada {
@@ -127,16 +127,21 @@ hr {
     flex-direction: column;
     align-items: center;
     margin: 15px;
+    width: 100%;
 }
 
 .cartoesTitle, .mecanicaTitle, .categorizacaoTitle, .premioTitle, .limiteCashbackTitle, .dataInicioTitle, .estabelecimentosComerciaisTitle, .dataTerminoTitle, .MCCSTitle, .modosEntradaTitle {
     margin-bottom: 10px;
-    text-wrap: nowrap;
-    text-align: justify;
+    text-align: left;
+    width: 100%;
 }
 
-.cartoesCampanha h3, .mecanicaCampanha h3, .categorizacaoCampanha h3, .premioCampanha h3, .limiteCashbackCampanha h3, .dataInicioCampanha h3, .estabelecimentosComerciaisCampanha h3, .dataTerminoCampanha h3, .MCCSCampanha h3, .modosEntradaCampanha h3 {
-    padding: 5px;
+.cartoesCampanha, .mecanicaCampanha, .categorizacaoCampanha, .premioCampanha, .limiteCashbackCampanha, .dataInicioCampanha, .estabelecimentosComerciaisCampanha, .dataTerminoCampanha, .MCCSCampanha, .modosEntradaCampanha {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #006c5b;
+    border-radius: 8px;
 }
 
 .MCCSCampanha, .modosEntradaCampanha {
@@ -158,102 +163,49 @@ hr {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding: 0 0;
-    font-size: 20px;
-    border: 0;
-    border-radius: 10px;
-    background-color: #00b766;
-    color: black;
-}
-
-.editar_campanha {
-    width: 30%;
-    height: 44px;
-    margin: 20px 0 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0 0;
-    font-size: 20px;
-    border: 0;
-    border-radius: 10px;
-    background-color: orange;
-    color: black;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: 0.5s ease;
 }
 
 .salvar_continuar:hover {
-    color: #fff;
-    transition: 0.4s ease;
-}
-
-.editar_campanha:hover {
-    color: #fff;
-    transition: 0.4s ease;
-}
-
-.escolhas {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-wrap: nowrap;
-}
-
-.escolhas h4 {
-    text-align: center;
-    align-items: center;
-}
-
-.confirmacao {
-    width: 30%;
-    height: 44px;
-    margin: 20px 0 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0 0;
-    font-size: 20px;
-    border: 0;
-    border-radius: 10px;
-    background-color: green;
+    background-color: #f5f5dc;
     color: black;
 }
 
-.negacao {
-    width: 30%;
-    height: 44px;
-    margin: 20px 0 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+button {
     cursor: pointer;
-    padding: 0 0;
-    font-size: 20px;
-    border: 0;
-    border-radius: 10px;
-    background-color: red;
-    color: black;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #00796b;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
 }
 
-::-webkit-scrollbar {
-    width: 5px;
+button:hover {
+    background-color: #004d40;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #00b766;
-}
-
-/* Estilo da mensagem de sucesso */
-.mensagem_sucesso {
+.hidden {
     display: none;
-    justify-content: center;
-    align-items: center;
-    font-size: 80px;
-    font-family: "Montserrat", sans-serif;
-    color: #00b761;
-    text-shadow: 3px 3px 5px rgba(16, 59, 17, 0.6);
+}
+
+.mensagem_sucesso {
+    display: none; /* Inicialmente oculta */
+    background-color: #4CAF50; /* Cor verde de sucesso */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: fixed; /* Fixa a posição na tela */
+    top: 20%; /* Ajusta a posição para o topo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a posição para o centro */
     text-align: center;
-    height: 100vh;
-    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Garante que fique sobre outros elementos */
 }

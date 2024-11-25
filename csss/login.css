@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #E3E3E3;
+    background-color: #005e52;
 }
 
 .container {
@@ -24,9 +24,8 @@ body {
 
 /* Login Form Section */
 .login-form {
-    flex: 1;
     background-color: #F9F9F9;
-    padding: 40px;
+    padding: 80px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     display: flex;
@@ -37,22 +36,14 @@ body {
 
 .logo {
     width: 200px;
-    margin-bottom: 20px;
 }
 
 h2 {
-    margin-bottom: 20px;
     color: #333;
 }
 
 form {
     width: 100%;
-}
-
-label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
 }
 
 input {
@@ -122,13 +113,6 @@ input {
     background-color: #57B957;
 }
 
-#id-gestor {
-    margin-bottom: 0px;
-}
-#senha {
-    margin-top: 20px;
-}
-
 #bem-vindo {
     color: #F8F6F0;
     font-size: 32px;
@@ -144,4 +128,52 @@ input {
     font-family: Inter;
     font-weight: 400;
     word-wrap: break-word
+}
+
+
+.input-gestor {
+    position: relative;
+    margin: 30px 0;
+    width: 100%;
+    width: 300px;
+}
+
+.input-gestor label {
+    position: absolute;
+    left: 5px;
+    bottom: 25px;
+    transition: all 0.2s;
+    cursor: text;
+    font-size: 24px;
+}
+
+.input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    font-size: 18px;
+    outline: 0;
+    background-color: #fff;
+}
+
+form .input::placeholder {
+    color: transparent;
+}
+
+form .input::placeholder,
+form .input:focus::placeholder {
+    transition: all 0.5s;
+}
+
+form .input:focus::placeholder {
+    color: #cccc6c;
+    font-size: 20px;
+}
+
+form .input-gestor .input:focus ~ label,
+form .input-gestor .input:valid ~ label {
+    transform: translateY(-28px);
+    font-size: 20px;
+    color: #00b766;
 }

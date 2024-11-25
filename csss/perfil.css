@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #005e52;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o container principal */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 900px;
+    background-color: #005e52;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Cabeçalho */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #005e52;
+    padding: 20px;
+    width: 100%;
+    color: white;
+}
+
+.profile-header .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+.profile-header h1 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+.profile-header p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Divisão de linhas */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.first-row, .second-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Seções */
+section {
+    flex: 1;
+    background-color: #005e52;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+/* Inputs e botões */
+input, select, button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+input, select {
+    background-color: white;
+    color: black;
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 5px #00b766;
+}
+
+button {
+    background-color: #00b766;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    color: white;
+    transition: 0.5s ease;
+}
+
+
+.editProfileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

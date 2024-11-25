@@ -11,6 +11,7 @@
     padding: 20px; /* Adiciona preenchimento ao redor do conteúdo */
     border-radius: 1em; /* Bordas arredondadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #00b766;
 }
 
 .filtros {
