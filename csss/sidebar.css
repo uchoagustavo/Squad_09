@@ -168,6 +168,36 @@ body {
   width: 100%;
 }
 
+/* Tema Claro - Aplica apenas quando a classe light-theme está no body */
+body.light-theme {
+  background-color: #97e0a2; /* Claro */
+}
+
+body.light-theme .sidebar {
+  background: #ddfff9; /* Claro */
+}
+
+body.light-theme .sidebar-header {
+  background: #ddfff9; /* Escuro */
+  color: #fff;
+}
+
+body.light-theme .toggler {
+  background: #328d13; /* Escuro */
+  color: #fff;
+}
+
+body.light-theme .sidebar-nav .nav-link {
+  color: #151a2d; /* Escuro */
+}
+
+body.light-theme .sidebar-nav .nav-link:hover {
+  color: #fff;
+  background: #328d13;
+}
+
+
+
 @media (max-width: 1024px) {
   .sidebar {
     height: 56px;

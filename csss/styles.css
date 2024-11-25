@@ -375,3 +375,53 @@ form .input-group-data .input-item .input-data:valid ~ label {
     border-radius: 0.5em; /* Bordas arredondadas da imagem */
     border: 0 transparent; /* Adiciona uma borda branca de 3 pixels */
 }
+
+/* /////// Light Theme v //////// */
+
+body.light-theme #theme-toggle {
+    background-color: #ebfff8;
+    color: #151a2d;
+}
+
+body.light-theme .campanha {
+    background-color: #328d13; /* Claro */
+    color: #151a2d; /* Escuro */
+}
+body.light-theme .input {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+body.light-theme .input-data {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+body.light-theme .select-status {
+    background-color: #fff; /* Claro */
+    border: 2px solid #ddd;
+}
+
+/* Botão de pesquisa no tema claro */
+body.light-theme .pesquisar-filtro {
+    background-color: #1b4d09;
+    color: #ffffff;
+}
+
+/* Cards no tema claro */
+body.light-theme .card {
+    background-color: #328d13; /* Claro */
+    color: #ffffff; /* Escuro */
+}
+
+
+/* Botões do card no tema claro */
+body.light-theme .card-button {
+    background-color: #1b4d09;
+    color: #d6fdf6;
+}
+
+/* Tabela de pesquisa no tema claro */
+body.light-theme .tabela-pesquisa {
+    background-color: #328d13;
+}
