@@ -139,4 +139,3 @@ fileInput.addEventListener("change", () => {
         reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados
     }
 });
-``
